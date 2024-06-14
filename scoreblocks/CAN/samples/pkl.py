@@ -4,7 +4,7 @@ from PIL import Image
 
 # img = Image.open('example.jpg')  # 读取图片
 imgs=[]
-for i in os.listdir('../samples'):
+for i in os.listdir('scoreblocks/CAN/samples'):
     if i.endswith('.jpg'):
         imgs.append(Image.open(i))
 

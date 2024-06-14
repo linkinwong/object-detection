@@ -32,6 +32,8 @@ def _initialize_arguments(p: configargparse.ArgParser):
         args.device = 'cuda'
     else:
         args.device = 'cpu'
+    print(f'args:{args} ')
+
     return args
 
 
@@ -40,8 +42,9 @@ if __name__ == "__main__":
     p = configargparse.ArgParser(default_config_files=["ini/p1.ini"])
     args = _initialize_arguments(p)
     print(f'device:{args.device} torch_version:{torch.__version__}')
+
     # load dataset
-    with open(f'./asap/pkl/train/{args.prompt}_dataset.pkl', 'rb') as f:
+    with open(f'asap/pkl/train/{args.prompt}_dataset.pkl', 'rb') as f:
         dataset = pickle.load(f)
     folds = fivefold(dataset)
 
@@ -69,6 +72,7 @@ if __name__ == "__main__":
 
             model = AESmodel(traindata=(trainessays, trainscores), valdata=(valessays, valscores),
                              testdata=(testessays, testscores), foldname=foldname, args=args)
+            # 使用deepspeed的分布式训练包装器包装模型
             filepath = f'./prediction/{args.prompt}'
             if not os.path.isdir(filepath):
                 # make dir

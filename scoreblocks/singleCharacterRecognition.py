@@ -21,7 +21,9 @@ class Model:
             )
         elif self.model_name == 'SpinalVGG':
             self.model = SpinalVGG(27)
-        self.model.load_state_dict(torch.load(path))
+        # self.model.load_state_dict(torch.load(path))
+
+        self.model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
         # self.model.cpu()
         self.transforms = transforms.Compose([torchvision.transforms.ToTensor(),
                                               torchvision.transforms.Normalize(

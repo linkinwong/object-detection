@@ -133,7 +133,7 @@ class Model:
                 crop_img = self.img[y:y + h, x:x + w]
                 crop_img = crop_img.copy()
                 self.crop_img.append(crop_img)
-                # cv2.imwrite('./res/{}-{}.png'.format(self.name, idx + 1), crop_img)
+                cv2.imwrite('./res/{}-{}.png'.format(self.name, idx + 1), crop_img)
             return self.crop_img
 
     @staticmethod
@@ -172,5 +172,6 @@ if __name__ == '__main__':
     # model = Model()
     for i in folder:
         pic_path = os.path.join(path, i)
+        print(f"pic_path={pic_path}")
         name_ = i[:-4]
         res = model.process(pic_path, name_)  # res存储分割的图片

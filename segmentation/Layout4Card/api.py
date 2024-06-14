@@ -12,7 +12,7 @@ CLS_ID_NAME_MAP = {
 }
 class OuterSegmentation:
     def __init__(self):
-        self.model = YOLO(model='../segmentation/Layout4Card/runs/detect/train3/weights/best.pt')
+        self.model = YOLO(model='/data/alan/OCRAutoScore/segmentation/Layout4Card/runs/detect/train3/weights/best.pt')
 
     def get_segmentation(self, img):
         results =  self.model.predict(source=img, imgsz=640, save=False)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
                 cls_id = box.cls.cpu().numpy()[0]
                 x1,y1,x2,y2 = box.xyxy.cpu().numpy()[0]
                 cls_name = CLS_ID_NAME_MAP[cls_id]
-                if cls_name == 'fillin_problem':
+                if cls_name == 'objective_problem':
                     img = result.orig_img
                     img = img[int(y1):int(y2), int(x1):int(x2)]
                     # 保存img到目标文件夹，文件名随机生成

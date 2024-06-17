@@ -1,10 +1,11 @@
+import cv2
 import paddleocr
 import numpy as np
 from PIL import Image
 import torch
 from transformers import CLIPProcessor, CLIPModel
 
-debug = False
+debug = True
 
 class model:
     def __init__(self, language:str="en"):
@@ -13,17 +14,20 @@ class model:
         """
         self.ocr = paddleocr.PaddleOCR(use_angle_cls=True, lang=language, show_log=False)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-large-patch14").to(self.device)
-        self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14", device=self.device)
+        print("16 fillblankmodel file 注释掉了clip_model, 因为url报错")
+        # self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-large-patch14").to(self.device)
+        # self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14", device=self.device)
 
-    def recognize_text(self, _img:Image):
+    def recognize_text(self, _img):
         """
         Predict the text from image
         :parameter img: image, type: np.ndarray
         :return: result, type: tuple{location: list, text: str}
         """
-        img = np.array(_img)
-        result = self.ocr.ocr(img)
+        cv2.imwrite('/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_tkt_before_recognize_text.png', _img)
+            
+        # img = np.array(_img)
+        result = self.ocr.ocr(_img)
         if debug:
             print(result)
         if len(result[0]) == 0:

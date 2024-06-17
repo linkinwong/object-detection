@@ -24,7 +24,8 @@ class scoresystem:
         )
         self.fill_blank_model = FillBlankModel.model()
         self.candemo = CanDemo.model()
-        self.essay_score_model = EssayScoreModel.model()
+        print('27 注释掉下面模型，因为hf hub报错')
+        # self.essay_score_model = EssayScoreModel.model()
         # 答案
         # answer是一个数组，每项是一个字典，字典格式如下：
         # {'section': 'xzt', # section的意思是题目类型，xzt是选择题，tkt是填空题，zwt是作文题
@@ -35,6 +36,15 @@ class scoresystem:
     def set_answer(self, answer):
         self.answer = answer
 
+    @staticmethod
+    def scale_image(img, target_width=640):
+        # 同步缩放到宽度640，保持不变形
+        height, width = img.shape[:2]
+        new_width = target_width
+        new_height = int((new_width / width) * height)
+        resized_img = cv2.resize(img, (new_width, new_height))
+        return resized_img
+
     def tkt_score(self, section_img, section_answer):
         # 2.填空分割
         blank_segmentation_result = self.blank_segmentation.process_img(
@@ -42,14 +52,16 @@ class scoresystem:
         )  # blank_segmentation_result是一个数组，每项都是图片ndarray
         score_result = {"section": "tkt"}
         right_array = []
-        # 3.OCR单词识别
+        
         for i in range(len(blank_segmentation_result)):
             cv2.imwrite(f"/data/alan/OCRAutoScore/debug/image_process_steps_learn/tkt_small_seg_{i}.png", blank_segmentation_result[i])
+        # 3.OCR单词识别
+        for i in range(len(blank_segmentation_result)):
             recognition_result = self.fill_blank_model.recognize_text(
                 blank_segmentation_result[i]
             )
 
-            # print('52  填空题识别的结果 result', recognition_result)
+            print('64  填空题识别的结果 result', recognition_result)
             if recognition_result is not None:
                 if recognition_result[1] == section_answer[i]:
                     right_array.append(1)
@@ -122,8 +134,13 @@ class scoresystem:
         return score_result
 
     def get_score(self, img_path):
+        img = cv2.imread(img_path)
+        scaled_img = scoresystem.scale_image(img,1650)
+        img_path = "/data/alan/OCRAutoScore/debug/image_process_steps_learn/scaled_img.png"
+        cv2.imwrite(img_path, scaled_img)
 
         img = PIL.Image.open(img_path)
+        # print('127  图片的size是：', img.size)
         total_result = []
         # 这个是返回的批改结果，格式为数组，每个数组元素都是一个字典，字典格式为：
         # {'section':科目, 'value':[一个01数组，1表示对应index的小题对，0表示对应index的小题错]}
@@ -132,6 +149,7 @@ class scoresystem:
         answer_set_index = 0
         # 1.外框分割
         outer_segmentation_results = self.outer_segmentation.get_segmentation(img)
+        # print('136, 分割处理后的数据结构为outer_segmentation_results： ', outer_segmentation_results)
         CLS_ID_NAME_MAP = {
             0: "student_id",
             1: "subjective_problem",
@@ -163,8 +181,8 @@ class scoresystem:
                         values = main_recognize_examinee_id(xyxy, img_path)
                         total_result.append({'section': 'id', 'value': values})
 
-
                 if cls_name == "fillin_problem":  # 填空题模型
+                    continue
                     for answer in self.answer[answer_set_index:]:
                         if answer["section"] == "tkt":  # 题目类型相符
                             # answer_set_index = self.answer.index(answer)
@@ -189,6 +207,7 @@ class scoresystem:
                             # )
                             total_result.append(score_result)
                 elif cls_name == "subjective_problem":
+                    continue
                     for answer in self.answer[answer_set_index:]:
                         if answer["section"] == "zwt":  # 题目类型相符
                             # answer_set_index = self.answer.index(answer)
@@ -247,8 +266,10 @@ if __name__ == "__main__":
         if i.endswith(".png") or i.endswith(".jpg"):
             path = os.path.join(test_dir, i)
             path = "/data/alan/OCRAutoScore/example_img/1.jpg"
-            # path = "/data/alan/OCRAutoScore/example_img/62691a3a29ac300b8b92a88c-0182200420-20221017163608-20220427173655_100.jpg"
-            print("223", "file_name:", path)
+            path = "/data/alan/OCRAutoScore/example_img/62691a3a29ac300b8b92a88c-0182200420-20221017163608-20220427173655_100.jpg"
+            # path  ="/data/alan/OCRAutoScore/example_img/62691a5c29ac300b8b92adc6-0182200513-20221017163755-20220427174311_062.jpg"
+            path ="/data/alan/OCRAutoScore/example_img/62691a4b29ac300b8b92ab3b-0182200529-20221017163338-20220427173915_052.jpg"
+            # print("223", "file_name:", path)
             total_result = s.get_score(path)
             print(total_result)
             break

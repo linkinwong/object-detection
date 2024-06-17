@@ -197,7 +197,7 @@ def main_recognize_scantron_by_examinee(list_box, ori_img_path):
     model_ = Read_XZT_Model(debug=False)
     img_draw = cv2.imread(ori_img_path)
 
-    print("217 进入客观选择题区域，分割的大的区域 list_box", list_box)
+    # print("217 进入客观选择题区域，分割的大的区域 list_box", list_box)
 
     sorted_rectangles = sort_rectangles_by_center(list_box)
 
@@ -330,11 +330,11 @@ def stat_graphical_small_rect_dimension(
     x1, y1, x2, y2 = rect
     section_img = ori_img[int(y1) : int(y2), int(x1) : int(x2)]
     res = read_xzt_model.process(section_img)
-    # print(
-    #     " 189  涂抹小矩形 after process    col_id, rect:",
-    #     col_id,
-    #     res,
-    # )
+    print(
+        " 189  客观题一个多选项区域 after process    col_id, rect:",
+        col_id,
+        rect,
+    )
 
     # 统计平均高度，剔除低于一半平均高度的框
     sum_h = 0
@@ -469,7 +469,7 @@ def main_recognize_examinee_id(box, ori_img_path):
     model_ = Read_XZT_Model(debug=False)
     img_draw = cv2.imread(ori_img_path)
 
-    # print("462 进入考生号区域，分割的大的区域 box", box)
+    # print("472 进入考生号区域，分割的大的区域 box, 原图尺寸cv2.imread", box, img_draw.shape)
 
     rect = box
     final_small_rectanges, global_mean_w, global_mean_h = (

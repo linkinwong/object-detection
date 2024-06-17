@@ -36,9 +36,18 @@ class Model:
         return binary
 
     def process_img(self, img):
-        self.__preProcessing_img(img)
+        # self.__preProcessing_img(img)
         binary = self.__preProcessing_img(img)
+        cv2.imwrite(
+            f"/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_tkt_binary.png",
+            binary,
+        )
         horizon = self.__detectLines(binary)
+
+        cv2.imwrite(
+            f"/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_tkt_detect_lines.png",
+            horizon,
+        )
         self.__contourExtraction(horizon)
         result = self.__segmentation()
         self.rects.clear()
@@ -156,8 +165,9 @@ class Model:
 
 
 if __name__ == '__main__':
-    path = input('输入识别的文件夹路径\n')
-    debug = input('是否为Debug模式：T/F\n')
+    # path = input('输入识别的文件夹路径\n')
+    # debug = input('是否为Debug模式：T/F\n')
+    debug = 'T'
     if debug == 'T':
         debug = True
     elif debug == 'F':
@@ -165,11 +175,12 @@ if __name__ == '__main__':
     else:
         print('输入错误')
         sys.exit()
-    # path = 'img'  # 文件夹名
-    folder = os.listdir(path)
+    # folder = os.listdir(path)
     count = 0
     model = Model(debug=debug)
-    # model = Model()
+
+    
+    print(f"pic_path={pic_path}")
     for i in folder:
         pic_path = os.path.join(path, i)
         print(f"pic_path={pic_path}")

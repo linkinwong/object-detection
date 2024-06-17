@@ -11,7 +11,7 @@ class model:
         """
         :parameter language: the language of the text, `ch`, `en`, `french`, `german`, `korean`, `japan`, type: str
         """
-        self.ocr = paddleocr.PaddleOCR(use_angle_cls=True, lang=language)
+        self.ocr = paddleocr.PaddleOCR(use_angle_cls=True, lang=language, show_log=False)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-large-patch14").to(self.device)
         self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14", device=self.device)

@@ -1,135 +1,3 @@
-# import paddleocr
-# import numpy as np
-# from PIL import Image, ImageDraw
-# import torch
-# from transformers import CLIPProcessor, CLIPModel
-# import cv2
-# from ultralytics import YOLO
-
-# debug = False
-
-# class Model:
-#     def __init__(self, language: str = "en"):
-#         self.ocr = paddleocr.PaddleOCR(use_angle_cls=True, lang=language)
-#         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-#         self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-large-patch14").to(self.device)
-#         self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14")
-#         self.yolo_model = YOLO("./segmentation/Layout4Card/runs/detect/train3/weights/best.pt")  # 替换为你的本地路径
-
-#     def preprocess_image(self, img_path: str):
-#         img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-#         _, binary_img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
-#         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
-#         cleaned_img = cv2.morphologyEx(binary_img, cv2.MORPH_CLOSE, kernel)
-#         return cleaned_img
-
-#     def recognize_text(self, img_path: str):
-#         img = Image.open(img_path).convert('RGB')
-#         img_array = np.array(img)
-#         result = self.ocr.ocr(img_array)
-#         if debug:
-#             print(result)
-#         draw = ImageDraw.Draw(img)
-#         if len(result[0]) == 0:
-#             print("recognize_text: 0")
-#             return None
-#         else:
-#             results = []
-#             for line in result[0]:
-#                 location = line[0]
-#                 text = line[1][0]
-#                 draw.rectangle([tuple(location[0]), tuple(location[2])], outline="red", width=2)
-#                 results.append((location, text))
-#             img.save("output_with_boxes.png")  # 保存标注结果的图片
-#             return results
-
-#     def judge_with_clip(self, answers: list, _predict: str, _img: Image):
-#         image = _img
-#         texts = [f"含有文字\"{answer}\"的图片" for answer in answers]
-#         texts.append(f"含有文字\"{_predict}\"的图片")
-#         texts.append("含有其他文字的图片")
-
-#         inputs = self.clip_processor(
-#             text=texts,
-#             images=image,
-#             return_tensors="pt",
-#             padding=True
-#         )
-#         inputs.to(self.device)
-#         outputs = self.clip_model(**inputs)
-#         logits_per_image = outputs.logits_per_image
-#         probs = logits_per_image.softmax(dim=1)
-#         if debug:
-#             print(probs)
-#         index = torch.argmax(probs, dim=1).item()
-#         return index
-
-#     def extract_answers(self, text_results, img_path: str):
-#         img = cv2.imread(img_path)
-#         answers = {}
-#         for location, text in text_results:
-#             x, y, w, h = int(location[0][0]), int(location[0][1]), int(location[2][0] - location[0][0]), int(location[2][1] - location[0][1])
-#             roi = img[y:y+h, x:x+w]
-#             filled_area = cv2.countNonZero(cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY))
-#             total_area = w * h
-#             fill_ratio = filled_area / total_area
-
-#             if fill_ratio > 0.5:
-#                 question_number = (y // 50) + 1
-#                 option = chr(65 + (x // 50) % 4)
-#                 answers[question_number] = option
-
-#         return answers
-
-#     def detect_answers_with_yolo(self, img_path: str):
-#         results = self.yolo_model(img_path)
-#         for result in results:
-#             for box in result.boxes:
-#                 print(box.xyxy, box.conf, box.cls)
-
-# if __name__ == "__main__":
-#     debug = True
-#     model = Model()
-#     while True:
-#         img_path = input("请输入图片路径: ")
-#         answer = input("请输入正确答案(多个答案请用逗号分隔): ").split(",")
-#         preprocessed_img = model.preprocess_image(img_path)
-#         text_results = model.recognize_text(img_path)
-#         if text_results:
-#             answers = model.extract_answers(text_results, img_path)
-#             print("提取的答案: ", answers)
-#             for q, pred in answers.items():
-#                 if pred not in answer:
-#                     print("正确答案列表：", answer)
-#                     index = model.judge_with_clip(answer, pred, Image.open(img_path))
-#                     print("判断结果: ", (answer, pred, "错误")[index])
-#         else:
-#             print("未检测到文本")
-#         model.detect_answers_with_yolo(img_path)
-# def check_filled_area(self, img_path: str, boxes):
-#     img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-#     img_color = cv2.imread(img_path)
-#     filled_boxes = []
-#     for box in boxes:
-#         x1, y1, x2, y2 = box
-#         roi = img[y1:y2, x1:x2]
-#         filled_area = cv2.countNonZero(roi)
-#         total_area = (x2 - x1) * (y2 - y1)
-#         fill_ratio = filled_area / total_area
-#         if fill_ratio > 0.5:
-#             filled_boxes.append(box)
-#             cv2.rectangle(img_color, (x1, y1), (x2, y2), (0, 0, 255), 2)
-#     cv2.imwrite("output_with_boxes.png", img_color)
-#     return filled_boxes
-
-# def extract_answers(self, boxes):
-#     answers = {}
-#     for box in boxes:
-#         x1, y1, x2, y2 = box
-#         question_number = (y1 // 50) + 1
-#         option = chr(65 + ((x1 // 50) % 4))
-#         answers[question_number] = option
-#     return answers
 import paddleocr
 import numpy as np
 from PIL import Image, ImageDraw
@@ -141,7 +9,7 @@ debug = True
 
 class Score_XZT_Model:
     def __init__(self, language: str = "ch"):
-        self.ocr = paddleocr.PaddleOCR(use_angle_cls=True, lang=language)
+        # self.ocr = paddleocr.PaddleOCR(use_angle_cls=True, lang=language)
         self.yolo_model = YOLO(
             "./segmentation/Layout4Card/runs/detect/train3/weights/best.pt"
         )  # 替换为你的本地路径
@@ -226,7 +94,7 @@ class Score_XZT_Model:
                     ans_list = list( map(str.upper, ans_list))
                     if i+1 not in examinee_response:
                         value_to_return.append(-1)
-                        print(f'选择题{i+1}: 没有识别到考生的这道题。正确答案{ans_list}')
+                        # print(f'选择题{i+1}: 没有识别到考生的这道题。正确答案{ans_list}')
                         continue
                     response_in_abcd = list(map(lambda x: chr(x+64), list(examinee_response[i+1])) )
                     if set(response_in_abcd)== set(ans_list):

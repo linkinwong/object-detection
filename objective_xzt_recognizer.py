@@ -82,14 +82,16 @@ class Read_XZT_Model:
 
     # @staticmethod
     def __detectLines(self, img):  # 检测水平线, 把比较细的线给腐蚀掉
-        horizon_k = int(math.sqrt(img.shape[1]) * 1.2)  # w
-        # hors_k = int(binary.shape[1]/ 16)  # w
+        # horizon_k = int(math.sqrt(img.shape[1]) * 1.2)  # w
+        horizon_k = int(img.shape[1] / 16)  # w
+        horizon_k = 6
+        # print("87  核的形状： ", (horizon_k, 1))
         kernel = cv2.getStructuringElement(
             cv2.MORPH_RECT, (horizon_k, 1)
         )  # 设置内核形状
-        horizon = ~cv2.dilate(img, kernel, iterations=1)  # 膨胀
+        horizon = ~cv2.dilate(img, kernel)  # 膨胀
         # cv2.imwrite(
-        #     f"/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_section_horiz_neg_dilate_{self.count}.png",
+        #     f"/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_section_horiz_1.5rd_neg_dilate_{self.count}.png",
         #     horizon,
         # )
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (int(horizon_k / 1.2), 1))
@@ -100,8 +102,8 @@ class Read_XZT_Model:
         # )
 
         kernel = cv2.getStructuringElement(
-            cv2.MORPH_RECT, (1, 7)
-        )  # 创建一个高度为7的垂直线
+            cv2.MORPH_RECT, (1, 6)
+        )  # 创建一个高度为6的垂直线
         horizon = cv2.erode(horizon, kernel)
         # cv2.imwrite(
         #     f"/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_section_horiz_4nd_eroded_{self.count}.png",
@@ -200,14 +202,17 @@ def main_recognize_scantron_by_examinee(list_box, ori_img_path):
     sorted_rectangles = sort_rectangles_by_center(list_box)
 
     rect_dic = {}
-    mean_h_lst, mean_w_lst = [], []  # 多个选择题题组，综合起来涂抹块的平均值
+    mean_h_lst, mean_w_lst = (
+        [],
+        [],
+    )  # 多个选择题题组，综合起来涂抹块的宽度和高度的平均值
     for rect, row_id, col_id in sorted_rectangles:
         x1, y1, x2, y2 = rect
         final_small_rectanges, mean_w, mean_h = stat_graphical_small_rect_dimension(
             rect, ori_img=img_draw, col_id=col_id, read_xzt_model=model_
         )
         # print(
-        #     " 300  涂抹小矩形 宽度异常值剔除及拆分之后 的结果 res:",
+        #     " 210  涂抹小矩形 宽度异常值剔除及拆分之后 的结果 res:",
         #     final_small_rectanges,
         # )
         rect_dic[(row_id, col_id, x1, y1, x2, y2)] = final_small_rectanges
@@ -238,7 +243,7 @@ def main_recognize_scantron_by_examinee(list_box, ori_img_path):
     #     global_mean_h_itemize,
     # )
 
-    # print('334  这个是否有问题rect_dic: ', rect_dic)
+    # print('241  这个是否有问题rect_dic: ', rect_dic)
     question_id = 0
     examinee_xzt_response = defaultdict(set)
     for k, v in rect_dic.items():
@@ -306,7 +311,7 @@ def main_recognize_scantron_by_examinee(list_box, ori_img_path):
     return examinee_xzt_response
 
 
-# 确定一个涂抹块是位于改行的第几个答案
+# 确定一个涂抹块是位于该行的第几个答案
 def find_answer_in_subinterval(interval, middle_point, n_subintervals):
     interval_size = (interval[1] - interval[0]) / (n_subintervals)
     for i in range(1, n_subintervals + 1):
@@ -318,13 +323,15 @@ def find_answer_in_subinterval(interval, middle_point, n_subintervals):
     return -1
 
 
-def stat_graphical_small_rect_dimension(rect, ori_img, col_id, read_xzt_model):
+def stat_graphical_small_rect_dimension(
+    rect, ori_img, col_id, read_xzt_model: Read_XZT_Model
+):
     # 统计客观题答题区域的填涂和空白的尺寸信息
     x1, y1, x2, y2 = rect
     section_img = ori_img[int(y1) : int(y2), int(x1) : int(x2)]
     res = read_xzt_model.process(section_img)
     # print(
-    #     " 189  涂抹小矩形 after process   row_id, col_id, rect:",
+    #     " 189  涂抹小矩形 after process    col_id, rect:",
     #     col_id,
     #     res,
     # )
@@ -359,7 +366,7 @@ def stat_graphical_small_rect_dimension(rect, ori_img, col_id, read_xzt_model):
 
     # print(" 260  涂抹小矩形 剔除高度和宽度过小值之后  res:", res_new)
     mean_w = sum_w / count
-    print("261  小涂抹格的平均高度和宽度分别是： ", mean_h, mean_w)
+    # print("261  小涂抹格的平均高度和宽度分别是： ", mean_h, mean_w)
 
     # 一个涂抹格的宽度过大， 可能需要拆分成几个涂抹格
     final_small_rectanges = []
@@ -411,7 +418,7 @@ def calculate_mean_horizontal_dist(rect_dic, global_mean_w):
     # global mean_W_itemize是 空白距离+平均填涂区域的宽度
     global_mean_w_itemize = (
         sum(total_blank_dist_effect) / len(total_blank_dist_effect)
-        if len(total_blank_dist_effect) > 1
+        if len(total_blank_dist_effect) > 0
         else global_mean_w + 2
     )
     # print(" 419   item间的平均距离是global_mean_w_itemize： ", global_mean_w_itemize)
@@ -438,12 +445,148 @@ def calculate_mean_vertical_dist(rect_dic, global_mean_h):
     # global mean_h_itemize是 空白距离+平均填涂区域的宽度
     global_mean_h_itemize = (
         sum(total_blank_dist_effect) / len(total_blank_dist_effect)
-        if len(total_blank_dist_effect) > 1
+        if len(total_blank_dist_effect) > 0
         else global_mean_h + 2
     )
-    # print(" 426   item间的垂直平均距离是： ", global_mean_h_itemize)
+    # print(
+    #     " 444   item间的垂直平均距离global_mean_h_itemize是： ", global_mean_h_itemize
+    # )
     blank_y = global_mean_h_itemize - global_mean_h
     return global_mean_h_itemize, blank_y
+
+
+def main_recognize_examinee_id(box, ori_img_path):
+    """
+    使用模型识别并处理扫描答题卡中的考号填涂区域。
+
+    参数：
+    box：包含填涂区域框坐标[x1,y1,x2,y2]。
+    ori_img_path：原始答题卡图像路径。
+
+    返回值：
+    抽取出的考生编号，并在指定目录下保存处理后的图像和识别结果。
+    """
+    model_ = Read_XZT_Model(debug=False)
+    img_draw = cv2.imread(ori_img_path)
+
+    # print("462 进入考生号区域，分割的大的区域 box", box)
+
+    rect = box
+    final_small_rectanges, global_mean_w, global_mean_h = (
+        stat_graphical_small_rect_dimension(
+            rect, ori_img=img_draw, col_id=1, read_xzt_model=model_
+        )
+    )
+
+    # final_small_rectanges = sorted(
+    #     final_small_rectanges, key=functools.cmp_to_key(Read_XZT_Model._cmp_rect_r1)
+    # )
+
+    # print("474  全局小涂抹格的平均高度和宽度分别是： ", global_mean_h, global_mean_w)
+    rect_dic = {}
+    x1, y1, x2, y2 = rect
+    rect_dic[(1, 1, x1, y1, x2, y2)] = final_small_rectanges
+    # 统计平均水平间隔
+    global_mean_w_itemize, blank_x = calculate_mean_horizontal_dist(
+        rect_dic, global_mean_w
+    )
+    # print(
+    #     " 497   空白位置的平均距离 blank_x和平均水平间隔global_mean_w_itemize： ",
+    #     blank_x,
+    #     global_mean_w_itemize,
+    # )
+    # 统计平均垂直间隔
+    global_mean_h_itemize, blank_y = calculate_mean_vertical_dist(
+        rect_dic, global_mean_h
+    )
+    # print(
+    #     " 504   空白位置的平均距离是 blank_y和平均垂直间隔global_mean_h_itemize： ",
+    #     blank_y,
+    #     global_mean_h_itemize,
+    # )
+
+    # print("509  检查rect_dic: ", rect_dic)
+    question_id = 0
+    examinee_id_response = []
+    for k, v in rect_dic.items():
+        idx, idy, x1, y1, x2, y2 = k
+
+        column_num = round((x2 - x1 + blank_x) / global_mean_w_itemize)
+        real_item_gap = (x2 - x1 + blank_x) / column_num
+        # print(
+        #     "520 填涂的个数是：column_num ",
+        #     column_num,
+        # )
+
+        for i in range(column_num):
+            question_id += 1
+
+            for rect in v:
+                x, y, w, h = rect
+                middle_point_horizontal = x + 0.5 * w
+                # print(
+                #     "523, middle_point_vertical, idy,   upper, lower, rect:",
+                #     middle_point_horizontal,
+                #     idy,
+                #     int(i * real_item_gap),
+                #     int((i + 1) * real_item_gap),
+                #     rect,
+                # )
+                if (
+                    middle_point_horizontal >= i * real_item_gap
+                    and middle_point_horizontal < (i + 1) * real_item_gap
+                ):
+                    answer_nums = round(
+                        (y2 - y1 + blank_y) / (global_mean_h_itemize)
+                    )  # 加上blank_y，是因为最上最下的item的空白区各被截了0.5*blank_y
+                    if answer_nums != 10:  # 考号的每个数字永远都是从10个选一个.
+                        print(
+                            "532 Warning: 计算不正确，选项不是10个，而是： ",
+                            answer_nums,
+                        )
+                    interval = [y1 - 0.5 * blank_y, y2 + 0.5 * blank_y]
+                    middle_point_vertical = y1 + rect[1] + 0.5 * rect[3]
+                    id_y = find_answer_in_subinterval(
+                        interval, middle_point_vertical, answer_nums
+                    )
+                    real_id = id_y - 1
+                    if real_id < 0:
+                        print(
+                            "363 warning: 无法识别该填涂项是第几个数字, ans_num和该填涂块rect分别是：",
+                            question_id,
+                            rect,
+                        )
+                        continue
+                    examinee_id_response.append(real_id)
+
+                    x_new = x1 + x
+                    y_new = y1 + y
+                    cv2.rectangle(
+                        img_draw,
+                        (int(x_new), int(y_new)),
+                        (int(w + x_new), int(h + y_new)),
+                        (255, 0, 255),
+                        2,
+                    )
+                    cv2.putText(
+                        img_draw,
+                        str(question_id) + "_" + str(id_y),
+                        (int(x_new), int(y_new)),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.7,
+                        (255, 0, 0),
+                        1,
+                    )
+                    cv2.imwrite(
+                        f"/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_id{question_id}.png",
+                        img_draw,
+                    )
+        cv2.rectangle(
+            img_draw, (int(x1), int(y1)), (int(x2), int(y2)), (255, 0, 255), 2
+        )
+    # cv2.imwrite("/Users/wangmeng/Desktop/speaker-diarization-3.1/3.png", img_draw)
+    cv2.imwrite("/data/alan/OCRAutoScore/debug/1_process.png", img_draw)
+    return examinee_id_response
 
 
 def test_main_recognize_scantron_by_examniee():

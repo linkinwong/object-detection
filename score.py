@@ -1,4 +1,4 @@
-from objective_xzt_recognizer import  main_recognize_scantron_by_examinee
+from objective_xzt_recognizer import  main_recognize_examinee_id, main_recognize_scantron_by_examinee
 from objective_xzt_scorer import Score_XZT_Model
 import segmentation.Layout4Card.api as OuterSegmentation
 import segmentation.blankSegmentation.blank_segmentation as BlankSegmentation
@@ -49,7 +49,7 @@ class scoresystem:
                 blank_segmentation_result[i]
             )
 
-            print('52  填空题识别的结果 result', recognition_result)
+            # print('52  填空题识别的结果 result', recognition_result)
             if recognition_result is not None:
                 if recognition_result[1] == section_answer[i]:
                     right_array.append(1)
@@ -107,10 +107,10 @@ class scoresystem:
             for str_item in str_set:
                 essay += str_item[1][0]
             
-            print('106  作文题OCR的结果 essay', essay)
+            # print('106  作文题OCR的结果 essay', essay)
             # 用模型判断
             result = self.essay_score_model.getscore([essay])
-            print('106  作文题评分的结果 result', result)
+            # print('113  作文题评分的结果 result', result)
             if result != None:
                 result = result / 12 * 100
                 right_array.append(result)
@@ -155,7 +155,15 @@ class scoresystem:
                 # print("136  cls_name=", cls_name, (x1, y1, x2, y2))
 
                 if cls_name == "student_id":
-                    continue
+                    print('158  进入考生id填涂区域！！')
+                    box_conf = box.conf.item()
+                    if box_conf >= 0.25:  # 
+                        xyxy = box.xyxy.cpu().numpy()[0].astype(int)
+                        # 下面识别考生编号的填涂， values是选择的数字列表 
+                        values = main_recognize_examinee_id(xyxy, img_path)
+                        total_result.append({'section': 'id', 'value': values})
+
+
                 if cls_name == "fillin_problem":  # 填空题模型
                     for answer in self.answer[answer_set_index:]:
                         if answer["section"] == "tkt":  # 题目类型相符

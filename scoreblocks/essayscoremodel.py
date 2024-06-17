@@ -35,7 +35,7 @@ def _initialize_arguments(p):
     args = p.parse_args()
     for k, v in vars(args).items():
         config_dict[k] = v
-    print('59 config_dict at essayscoremodel',config_dict)
+    # print('59 config_dict at essayscoremodel',config_dict)
 
     if torch.cuda.is_available() and config_dict['cuda']:
         config_dict['device'] = 'cuda'
@@ -53,11 +53,11 @@ class model:
         # initialize arguments
         p = configargparse.ArgParser(default_config_files=["scoreblocks/MSPLM/ini/p1.ini"])
         self.args = _initialize_arguments(p)
-        print(f"84  device:{self.args['device']} torch_version:{torch.__version__}")
+        # print(f"56  device:{self.args['device']} torch_version:{torch.__version__}")
 
         # if args is not None:
         #     self.args = vars(args)
-        print(f"89 self.args={self.args}")
+        # print(f"60 self.args={self.args}")
         self.tokenizer = AutoTokenizer.from_pretrained(self.args['PLM'])
         self.prompt = int(self.args["prompt"][1])
         self.chunk_sizes = []

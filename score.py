@@ -24,8 +24,7 @@ class scoresystem:
         )
         self.fill_blank_model = FillBlankModel.model()
         self.candemo = CanDemo.model()
-        print('27 注释掉下面模型，因为hf hub报错')
-        # self.essay_score_model = EssayScoreModel.model()
+        self.essay_score_model = EssayScoreModel.model()
         # 答案
         # answer是一个数组，每项是一个字典，字典格式如下：
         # {'section': 'xzt', # section的意思是题目类型，xzt是选择题，tkt是填空题，zwt是作文题
@@ -135,8 +134,14 @@ class scoresystem:
 
     def get_score(self, img_path):
         img = cv2.imread(img_path)
+        # 如果宽比高还长，那么是双页版，需要截取第一页
+        
+        height, width, _ = img.shape
+        if width> 1.2* height:
+            img = img[:, : width//2]
+        cv2.imwrite("/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_left_half.png", img)
         scaled_img = scoresystem.scale_image(img,1650)
-        img_path = "/data/alan/OCRAutoScore/debug/image_process_steps_learn/scaled_img.png"
+        img_path = "/data/alan/OCRAutoScore/debug/image_process_steps_learn/1_scaled_img.png"
         cv2.imwrite(img_path, scaled_img)
 
         img = PIL.Image.open(img_path)
@@ -269,6 +274,8 @@ if __name__ == "__main__":
             path = "/data/alan/OCRAutoScore/example_img/62691a3a29ac300b8b92a88c-0182200420-20221017163608-20220427173655_100.jpg"
             # path  ="/data/alan/OCRAutoScore/example_img/62691a5c29ac300b8b92adc6-0182200513-20221017163755-20220427174311_062.jpg"
             path ="/data/alan/OCRAutoScore/example_img/62691a4b29ac300b8b92ab3b-0182200529-20221017163338-20220427173915_052.jpg"
+            path="/data/alan/OCRAutoScore/example_img/Huago20240618150914932_004100.jpg"
+            path="/data/alan/OCRAutoScore/example_img/Huago20240618150915418_002168.jpg"
             # print("223", "file_name:", path)
             total_result = s.get_score(path)
             print(total_result)

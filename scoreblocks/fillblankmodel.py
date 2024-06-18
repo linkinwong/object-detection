@@ -14,9 +14,9 @@ class model:
         """
         self.ocr = paddleocr.PaddleOCR(use_angle_cls=True, lang=language, show_log=False)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        print("16 fillblankmodel file 注释掉了clip_model, 因为url报错")
-        # self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-large-patch14").to(self.device)
-        # self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14", device=self.device)
+        # print("16 fillblankmodel file 注释掉了clip_model, 因为url报错")
+        self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-large-patch14").to(self.device)
+        self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14", device=self.device)
 
     def recognize_text(self, _img):
         """

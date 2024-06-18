@@ -84,7 +84,7 @@ class Read_XZT_Model:
     def __detectLines(self, img):  # 检测水平线, 把比较细的线给腐蚀掉
         # horizon_k = int(math.sqrt(img.shape[1]) * 1.2)  # w
         horizon_k = int(img.shape[1] / 16)  # w
-        horizon_k = 6
+        horizon_k = 7
         # print("87  核的形状： ", (horizon_k, 1))
         kernel = cv2.getStructuringElement(
             cv2.MORPH_RECT, (horizon_k, 1)
@@ -102,7 +102,7 @@ class Read_XZT_Model:
         # )
 
         kernel = cv2.getStructuringElement(
-            cv2.MORPH_RECT, (1, 6)
+            cv2.MORPH_RECT, (2, 6)
         )  # 创建一个高度为6的垂直线
         horizon = cv2.erode(horizon, kernel)
         # cv2.imwrite(
@@ -211,10 +211,10 @@ def main_recognize_scantron_by_examinee(list_box, ori_img_path):
         final_small_rectanges, mean_w, mean_h = stat_graphical_small_rect_dimension(
             rect, ori_img=img_draw, col_id=col_id, read_xzt_model=model_
         )
-        # print(
-        #     " 210  涂抹小矩形 宽度异常值剔除及拆分之后 的结果 res:",
-        #     final_small_rectanges,
-        # )
+        print(
+            " 210  涂抹小矩形 宽度异常值剔除及拆分之后 的结果 res:",
+            final_small_rectanges,
+        )
         rect_dic[(row_id, col_id, x1, y1, x2, y2)] = final_small_rectanges
         mean_w_lst.append(mean_w)
         mean_h_lst.append(mean_h)
@@ -249,7 +249,8 @@ def main_recognize_scantron_by_examinee(list_box, ori_img_path):
     for k, v in rect_dic.items():
         idx, idy, x1, y1, x2, y2 = k
 
-        row_num = round((y2 - y1) / global_mean_h_itemize)
+        row_num = round((y2 - y1 + blank_y) / global_mean_h_itemize)
+        real_item_gap = (y2 - y1 + blank_y) / row_num
 
         for i in range(row_num):
             question_id += 1
@@ -259,14 +260,14 @@ def main_recognize_scantron_by_examinee(list_box, ori_img_path):
                 middle_point_vertical = rect[1] + 0.5 * rect[3]
                 # print('349, middle_point_vertical, idy, i,  upper, lower, rect:', middle_point_vertical,idy, i, int(i*global_mean_h_itemize), int((i+1)*global_mean_h_itemize), rect)
                 if (
-                    middle_point_vertical >= i * global_mean_h_itemize
-                    and middle_point_vertical < (i + 1) * global_mean_h_itemize
+                    middle_point_vertical >= i * real_item_gap
+                    and middle_point_vertical < (i + 1) * real_item_gap
                 ):
                     # print('354, middle_point_vertical, i,  upper, lower, rect:', middle_point_vertical, i, int(i*global_mean_h_itemize), int((i+1)*global_mean_h_itemize), rect)
                     answer_nums = round(
-                        (x2 - x1) / (global_mean_w + 0.5 * blank_x)
+                        (x2 - x1 +blank_x) / global_mean_w_itemize  #(global_mean_w + 0.5 * blank_x)
                     )  # (global_mean_w+0.5*blank_x) 是填涂格宽度加上空白的一半，代表一个item占的宽度
-                    interval = [x1, x2]
+                    interval = [x1-0.5*blank_x, x2 + 0.5*blank_x]
                     middle_point_horizontal = x1 + rect[0] + 0.5 * rect[2]
                     id_x = find_answer_in_subinterval(
                         interval, middle_point_horizontal, answer_nums

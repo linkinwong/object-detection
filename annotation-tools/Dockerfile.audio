@@ -1,0 +1,13 @@
+FROM python:3.10-slim
+
+# Install common dependencies
+WORKDIR /tmp/backend-audio
+
+# Build source code
+COPY backend-audio/ /tmp/backend-audio/
+# 安装requirements.txt中指定的所有依赖
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
+
+# 运行Tornado web服务器
+CMD ["python", "run.py", "-p", "9591"]
+

@@ -1,0 +1,56 @@
+http:
+  routers:
+    grafana:
+      entryPoints:
+      - web
+      middlewares:
+      - analytics-auth
+      - strip-prefix
+      service: grafana
+      rule: Host(`{{ env "CVAT_HOST" }}`) && PathPrefix(`/analytics`)
+    grafana_https:
+      entryPoints:
+      - websecure
+      middlewares:
+      - analytics-auth
+      - strip-prefix
+      service: grafana
+      tls: {}
+      rule: Host(`{{ env "CVAT_HOST" }}`) && PathPrefix(`/analytics`)
+    cvat-websocket:
+      rule: Host(`{{ env "CVAT_HOST" }}`) && PathPrefix(`/websocket`)
+      entryPoints:
+        - web
+      middlewares:
+        - websocket-headers
+      service: cvat-websocket
+  middlewares:
+    analytics-auth:
+      forwardauth:
+        address: http://cvat_server:8080/analytics
+        authRequestHeaders:
+          - "Cookie"
+          - "Authorization"
+
+    strip-prefix:
+      stripprefix:
+        prefixes:
+        - /analytics
+ 
+    websocket-headers:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Proto: "ws"
+        customResponseHeaders:
+          Access-Control-Allow-Origin: "*"
+
+  services:
+    grafana:
+      loadBalancer:
+        servers:
+        - url: http://{{ env "DJANGO_LOG_VIEWER_HOST" }}:{{ env "DJANGO_LOG_VIEWER_PORT" }}
+        passHostHeader: false
+    cvat-websocket:
+      loadBalancer:
+        servers:
+          - url: "http://cvat_websocket:9593"

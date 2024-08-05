@@ -1,0 +1,223 @@
+在 Tornado Web 框架中设置 HTTP/2 支持需要一些额外的配置，因为 Tornado 原生支持 HTTP/1.x 协议。要启用 HTTP/2，需要使用第三方库 `h2`，并通过 SSL/TLS 来实现，因为 HTTP/2 需要使用 TLS。
+
+以下是如何在 Tornado 中设置 HTTP/2 支持的详细步骤：
+
+### 1. 安装所需的依赖库
+
+首先，需要安装 Tornado 和 `h2` 库：
+
+```bash
+pip install tornado h2
+```
+
+### 2. 配置 SSL/TLS
+
+为了支持 HTTP/2，必须启用 SSL/TLS。创建或获取 SSL 证书和密钥文件（`cert.pem` 和 `key.pem`）。
+
+### 3. 编写 Tornado 应用并启用 HTTP/2
+
+编写一个简单的 Tornado 应用，并配置它以支持 HTTP/2：
+
+```python
+import tornado.ioloop
+import tornado.web
+import tornado.httpserver
+import tornado.netutil
+import ssl
+from h2.config import H2Configuration
+from h2.connection import H2Connection
+
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello, HTTP/2")
+
+def make_app():
+    return tornado.web.Application([
+        (r"/", MainHandler),
+    ])
+
+def run_server():
+    app = make_app()
+    
+    ssl_ctx = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+    ssl_ctx.load_cert_chain(certfile="path/to/cert.pem", keyfile="path/to/key.pem")
+    
+    # Add ALPN protocols
+    ssl_ctx.set_alpn_protocols(["h2", "http/1.1"])
+    
+    # Initialize Tornado server with SSL
+    server = tornado.httpserver.HTTPServer(app, ssl_options=ssl_ctx)
+    
+    # Bind and start server
+    server.listen(443)
+    tornado.ioloop.IOLoop.current().start()
+
+if __name__ == "__main__":
+    run_server()
+```
+
+### 4. 运行服务器
+
+运行上述脚本，它将启动一个支持 HTTP/2 和 HTTP/1.1 的 Tornado 服务器。
+
+### 5. 访问服务器
+
+访问服务器时，可以通过浏览器或工具（如 `curl`）指定使用 HTTP/2 协议：
+
+```bash
+curl -k -I --http2 https://localhost
+```
+
+### 额外配置（可选）
+
+如果需要更多的 HTTP/2 功能（例如流控制、优先级等），可以在处理请求时使用 `h2` 库提供的功能。这需要更深入地定制 Tornado 的请求处理逻辑。
+
+### 示例：自定义 HTTP/2 处理逻辑
+
+以下是一个使用 `h2` 库更复杂的示例，展示如何处理 HTTP/2 请求：
+
+```python
+import tornado.ioloop
+import tornado.web
+import tornado.httpserver
+import tornado.netutil
+import ssl
+import h2.connection
+import h2.events
+
+class H2Handler(tornado.web.RequestHandler):
+    def initialize(self, conn):
+        self.conn = conn
+
+    def get(self):
+        self.write("Hello, HTTP/2")
+
+    def on_connection_close(self):
+        self.conn.close_connection()
+
+class H2Application(tornado.web.Application):
+    def __init__(self):
+        handlers = [
+            (r"/", H2Handler, dict(conn=h2.connection.H2Connection(config=h2.config.H2Configuration(client_side=False)))),
+        ]
+        super().__init__(handlers)
+
+def run_server():
+    app = H2Application()
+    
+    ssl_ctx = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+    ssl_ctx.load_cert_chain(certfile="path/to/cert.pem", keyfile="path/to/key.pem")
+    ssl_ctx.set_alpn_protocols(["h2", "http/1.1"])
+
+    server = tornado.httpserver.HTTPServer(app, ssl_options=ssl_ctx)
+    server.listen(443)
+    tornado.ioloop.IOLoop.current().start()
+
+if __name__ == "__main__":
+    run_server()
+```
+
+通过上述步骤，你可以在 Tornado 中启用 HTTP/2 支持，并根据需要进行进一步的定制和优化。
+
+
+
+在 Tornado 中启用 HTTP/2 支持而不使用 HTTPS 是不符合标准的，因为 HTTP/2 协议规定必须通过 TLS 加密来进行通信。不过，如果你处于一个受控的内部环境中，并且确定不需要加密传输，可以通过 `h2` 直接处理 HTTP/2 请求。
+
+以下是如何在 Tornado 中使用 `h2` 库处理纯文本 HTTP/2 请求的示例：
+
+### 1. 安装所需的依赖库
+
+确保安装了 Tornado 和 `h2` 库：
+
+```bash
+pip install tornado h2
+```
+
+### 2. 编写 Tornado 应用并处理 HTTP/2 请求
+
+下面是一个示例，展示如何编写一个 Tornado 应用，并通过 `h2` 直接处理 HTTP/2 请求：
+
+```python
+import tornado.ioloop
+import tornado.web
+import tornado.httpserver
+import tornado.netutil
+import h2.connection
+import h2.events
+import socket
+
+class H2Handler(tornado.web.RequestHandler):
+    def initialize(self, conn):
+        self.conn = conn
+
+    def get(self):
+        self.write("Hello, HTTP/2")
+
+    def on_connection_close(self):
+        self.conn.close_connection()
+
+class H2Application(tornado.web.Application):
+    def __init__(self):
+        handlers = [
+            (r"/", H2Handler, dict(conn=h2.connection.H2Connection(config=h2.config.H2Configuration(client_side=False)))),
+        ]
+        super().__init__(handlers)
+
+class H2Server(tornado.tcpserver.TCPServer):
+    def handle_stream(self, stream, address):
+        conn = h2.connection.H2Connection(client_side=False)
+        conn.initiate_connection()
+        stream.write(conn.data_to_send())
+
+        def read_message(data):
+            events = conn.receive_data(data)
+            for event in events:
+                if isinstance(event, h2.events.RequestReceived):
+                    self.handle_request(stream, conn, event)
+
+        stream.read_until_close(streaming_callback=read_message)
+
+    def handle_request(self, stream, conn, event):
+        headers = dict(event.headers)
+        path = headers.get(':path')
+        method = headers.get(':method')
+
+        if path == '/' and method == 'GET':
+            response_data = b"Hello, HTTP/2"
+            stream_id = event.stream_id
+            conn.send_headers(stream_id, [
+                (':status', '200'),
+                ('content-length', str(len(response_data))),
+                ('content-type', 'text/plain'),
+            ])
+            conn.send_data(stream_id, response_data, end_stream=True)
+            stream.write(conn.data_to_send())
+
+def run_server():
+    app = H2Application()
+    server = H2Server()
+    server.listen(8080)
+    tornado.ioloop.IOLoop.current().start()
+
+if __name__ == "__main__":
+    run_server()
+```
+
+### 说明
+
+- **H2Handler**：这是一个基本的 Tornado 请求处理程序。实际处理逻辑中不直接使用它，只是为了兼容 Tornado 的结构。
+- **H2Application**：定义了 Tornado 应用程序。这里的初始化只是为了展示，但实际请求处理在 `H2Server` 中完成。
+- **H2Server**：这是一个自定义的 TCP 服务器，直接处理 HTTP/2 流。`handle_stream` 方法处理新的连接，使用 `h2` 库解析 HTTP/2 帧。
+- **run_server**：启动服务器，监听端口 `8080`。
+
+### 注意
+
+虽然这个例子展示了如何在没有 TLS 的情况下处理 HTTP/2 请求，但在生产环境中，不建议这样做，因为这违反了 HTTP/2 的标准，并且缺乏加密传输的数据是不安全的。使用这种方式时，请确保环境是受控和安全的。
+
+可以用 `nghttp` 工具来测试服务器：
+
+```bash
+nghttp -nv http://localhost:8080
+```
+
+这样，你可以在 Tornado 中启用 HTTP/2 支持，而无需启动 HTTPS。不过，务必注意安全隐患。

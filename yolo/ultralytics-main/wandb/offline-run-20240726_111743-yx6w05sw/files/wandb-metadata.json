@@ -1,0 +1,43 @@
+{
+    "os": "macOS-13.5-arm64-arm-64bit",
+    "python": "3.10.11",
+    "heartbeatAt": "2024-07-26T03:17:43.805997",
+    "startedAt": "2024-07-26T03:17:43.772434",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/wangmeng/Downloads/model/ultralytics-main/train.py",
+    "codePathLocal": "train.py",
+    "codePath": "train.py",
+    "host": "wangmengdeMacBook-Air.local",
+    "username": "wangmeng",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 3504,
+        "min": 600,
+        "max": 3504
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3504,
+            "min": 600,
+            "max": 3504
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 460.4317207336426,
+            "used": 11.12173843383789
+        }
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 8.0
+    }
+}

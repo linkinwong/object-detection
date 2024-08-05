@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>CVAT Audio Annotator</title>
+
+    <link rel="stylesheet" type="text/css" href="css/audio-annotator.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.0.3.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.12.1.css">
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+<!--    <link rel="stylesheet" type="text/css" href="https://unpkg.com/antd@4.24.12/dist/antd.min.css">-->
+
+    <script type="text/javascript" src="js/lib/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-ui-1.12.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/materialize.min.js"></script>
+
+    <script type="text/javascript" src="js/lib/wavesurfer.min.js"></script>
+    <script type="text/javascript" src="js/lib/wavesurfer.spectrogram.min.js"></script>
+    <script type="text/javascript" src="js/colormap/colormap.min.js"></script>
+
+    <script type="text/javascript" src="js/src/message.js"></script>
+    <script type="text/javascript" src="js/src/wavesurfer.regions.js"></script>
+    <script type="text/javascript" src="js/src/wavesurfer.drawer.extended.js"></script>
+    <script type="text/javascript" src="js/src/wavesurfer.labels.js"></script>
+    <script type="text/javascript" src="js/src/wavesurfer.type.js"></script>
+    <script type="text/javascript" src="js/src/hidden_image.js"></script>
+    <script type="text/javascript" src="js/src/components.js"></script>
+    <script type="text/javascript" src="js/src/annotation_stages.js"></script>
+
+</head>
+<body class="relative">
+
+
+<div class="row header">
+
+    <div class="row">
+        <div class="col s4" id="iiiiiframe">
+        </div>
+
+<!--        save btn -->
+        <div class="job-select flex-between"></div>
+    </div>
+
+    <div class="col s12">
+        <div class="divider"></div>
+    </div>
+    <div class="col s12">
+        <div class="left" style="padding-top: 10px;">
+            <a id="wav_url"></a>
+        </div>
+    </div>
+</div>
+
+
+<div class="annotation">
+    <div class="scroll_div" style="position: relative; overflow-y: clip">
+        <div class="audio_visual">
+            <div class="labels"></div>
+
+        </div>
+    </div>
+    <div class="play_bar"></div>
+    <div class="hidden_img"></div>
+<!--    <div class="creation_stage_container"></div>-->
+    <div class="submit_container"></div>
+</div>
+
+<!--<script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>-->
+<!--<script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>-->
+<!--<script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>-->
+<!--<script crossorigin src="https://unpkg.com/antd@4.24.12/dist/antd.min.js"></script>-->
+
+<script type="text/javascript" src="js/src/main.js"></script>
+<!--<script type="text/babel" src="js/src/react-entry.jsx"></script>-->
+</body>
+</html>

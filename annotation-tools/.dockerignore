@@ -1,0 +1,17 @@
+/.git
+/.env
+/.vscode
+/.github
+/.husky
+/share
+/media
+/keys
+**/node_modules
+/static
+/serverless
+/site
+/helm-chart
+/dev
+/changelog.d
+/cvat-cli
+/profiles

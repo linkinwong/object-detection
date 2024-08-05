@@ -1,0 +1,11 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE meta(key LONGVARCHAR NOT NULL UNIQUE PRIMARY KEY, value LONGVARCHAR);
+INSERT INTO meta VALUES('mmap_status','-1');
+INSERT INTO meta VALUES('version','2');
+INSERT INTO meta VALUES('last_compatible_version','1');
+CREATE TABLE Databases (id INTEGER PRIMARY KEY AUTOINCREMENT, origin TEXT NOT NULL, name TEXT NOT NULL, description TEXT NOT NULL, estimated_size INTEGER NOT NULL);
+DELETE FROM sqlite_sequence;
+CREATE INDEX origin_index ON Databases (origin);
+CREATE UNIQUE INDEX unique_index ON Databases (origin, name);
+COMMIT;

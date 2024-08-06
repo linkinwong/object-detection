@@ -666,7 +666,7 @@ if (postgres_password_file := os.getenv('CVAT_POSTGRES_PASSWORD_FILE')) is not N
 
     postgres_password = Path(postgres_password_file).read_text(encoding='UTF-8').rstrip('\n')
 else:
-    postgres_password = os.getenv('CVAT_POSTGRES_PASSWORD', '')
+    postgres_password = os.getenv('CVAT_POSTGRES_PASSWORD', 'cvat')
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

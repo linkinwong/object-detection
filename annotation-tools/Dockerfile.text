@@ -1,0 +1,13 @@
+FROM python:3.10-slim
+
+# Install common dependencies
+WORKDIR /tmp/backend-text
+
+# Build source code
+COPY backend-text/ /tmp/backend-text/
+# 安装requirements.txt中指定的所有依赖
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
+
+# 运行Tornado web服务器
+CMD ["python", "run.py", "-p", "9592", "-n", "http://60.10.135.150:23727"]
+

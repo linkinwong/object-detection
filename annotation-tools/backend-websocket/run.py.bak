@@ -1,0 +1,32 @@
+import argparse
+import asyncio
+import websockets
+import json
+
+async def websocket_handler(websocket, path):
+    try:
+        async for message in websocket:
+            request_data = json.loads(message)
+            request_id = request_data['request_id']
+            features = request_data['features']
+
+            # 处理收到的特征数据并发送给客户端
+            await websocket.send(json.dumps({"request_id": request_id, "features": features}))
+    except Exception as e:
+        await websocket.send(json.dumps({"error": str(e)}))
+
+def start_websocket_server(port):
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    server = websockets.serve(websocket_handler, '0.0.0.0', port)
+
+    loop.run_until_complete(server)
+    loop.run_forever()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Start WebSocket server.')
+    parser.add_argument('-p', '--port', type=int, default=9593, help='Port to run the WebSocket server on')
+    args = parser.parse_args()
+
+    start_websocket_server(args.port)
+

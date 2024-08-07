@@ -1,0 +1,102 @@
+*.iml
+*.gv
+*.ipr
+*.iws
+*.orig
+*.rej
+*.sdf
+*.suo
+*.vcxproj.user
+*.log
+.idea
+*/.idea
+.svn
+
+
+
+.classpath
+.project
+.settings
+.vscode
+target/
+out/
+tmp/
+dist/
+*/dist/
+__pycache__
+*.pyc
+*.swp
+*.swo
+.DS_Store
+*.sln
+*.pyproj.user
+*.pyproj
+*.vs
+/subprojects/GOPATH/bin/
+/subprojects/GOPATH/pkg/
+*.egg-info/
+
+.ipynb_checkpoints/
+node_modules/
+*/node_modules/
+
+
+./Code\ Cache/
+Crashpad/
+WebStorage/
+Session\ Strorage/
+Service\ Worker/
+DawnCache/
+GPUCache/
+User/
+clp/
+Dictionaries/
+DWGSeeCAD2025/
+Shared\ Dictionary/
+Local\ Storage/
+
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.pydevproject
+logs
+tmp_dir
+~$*
+out
+w2v
+train
+scripts
+dataset
+result
+*.log*
+data/

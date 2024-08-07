@@ -1,0 +1,1191 @@
+{
+  "actions-menu_actions-menu_tsx": {
+    "Uploadannotations": "Upload annotations",
+    "Exporttaskdataset": "Export task dataset",
+    "Openbugtracker": "Open bug tracker",
+    "Automaticannotation": "Automatic annotation",
+    "BackupTask": "Backup Task",
+    "Viewanalytics": "View analytics",
+    "Movetoproject": "Move to project",
+    "Delete": "Delete"
+  },
+  "analytics-page_analytics-page_tsx": {
+    "Analyticsfor": "Analytics for",
+    "": " "
+  },
+  "analytics-page_analytics-performance_tsx": {},
+  "analytics-page_shared_quality-settings-modal_tsx": {
+    "AnnotationQualitySet": "Annotation Quality Settings",
+    "Noqualitysettings": "No quality settings"
+  },
+  "analytics-page_task-quality_empty-job_tsx": {
+    "NoGroundTruthjobcrea": "No Ground Truth job created yet...",
+    "Createnew": "Create new"
+  },
+  "analytics-page_task-quality_gt-conflicts_tsx": {
+    "Warnings": "Warnings:",
+    "Lowoverlap": "Low overlap:",
+    "Mismatchingdirection": "Mismatching direction:",
+    "Mismatchingattribute": "Mismatching attributes:",
+    "Mismatchinggroups": "Mismatching groups:",
+    "Coveredannotation": "Covered annotation:",
+    "Errors": "Errors:",
+    "Missingannotations": "Missing annotations:",
+    "Extraannotations": "Extra annotations:",
+    "Mismatchinglabel": "Mismatching label:",
+    "Errors_1": "Errors:",
+    "": " ",
+    "_1": ", ",
+    "Warnings_1": "Warnings:",
+    "_2": " "
+  },
+  "analytics-page_task-quality_issues_tsx": {
+    "Resolved": "Resolved:",
+    "": " "
+  },
+  "analytics-page_task-quality_job-list_tsx": {
+    "NA": "N/A",
+    "Jobs": "Jobs",
+    "Assignee": "Assignee",
+    "Stage": "Stage",
+    "FrameIntersection": "Frame intersection",
+    "Conflicts": "Conflicts",
+    "Quality": "Quality",
+    "Download": "Download"
+  },
+  "analytics-page_task-quality_mean-quality_tsx": {
+    "Meanannotationqualit": "Mean annotation quality consists of:",
+    "Correctannotations": "Correct annotations:",
+    "Taskannotations": "Task annotations:",
+    "GTannotations": "GT annotations:",
+    "Accuracy": "Accuracy:",
+    "Precision": "Precision:",
+    "Recall": "Recall:",
+    "QualityReport": "Quality Report"
+  },
+  "analytics-page_task-quality_quality-settings-form_tsx": {
+    "MinoverlapthresholdI": "Min overlap threshold(IoU) is used for distinction between matched / unmatched shapes.",
+    "Lowoverlapthresholdi": "Low overlap threshold is used for distinction between strong / weak (low overlap) matches.",
+    "ObjectKeypointSimila": "Object Keypoint Similarity (OKS) is like IoU, but for skeleton points.",
+    "TheSigmavalueisthepe": "The Sigma value is the percent of the skeleton bbox area ^ 0.5.\n                Used as the radius of the circle around a GT point,\n                where the checked point is expected to be.",
+    "Thevalueisalsousedto": "The value is also used to match single point annotations, in which case\n                the bbox is the whole image. For point groups the bbox is taken\n                for the whole group.",
+    "Ifthereisarectanglea": "If there is a rectangle annotation in the points group or skeleton,\n                it is used as the group bbox (supposing the whole group describes a single object).",
+    "Linethicknessthickne": "Line thickness - thickness of polylines, relatively to the (image area) ^ 0.5.\n                The distance to the boundary around the GT line,\n                inside of which the checked line points should be.",
+    "CheckorientationIndi": "Check orientation - Indicates that polylines have direction.",
+    "MinsimilaritygainThe": "Min similarity gain - The minimal gain in the GT IoU between the given and reversed line directions\n                to consider the line inverted. Only useful with the Check orientation parameter.",
+    "ComparegroupsEnables": "Compare groups - Enables or disables annotation group checks.",
+    "Mingroupmatchthresho": "Min group match threshold - Minimal IoU for groups to be considered matching,\n                used when the Compare groups is enabled.",
+    "Checkobjectvisibilit": "Check object visibility - Check for partially-covered annotations.",
+    "Minvisibilitythresho": "Min visibility threshold - Minimal visible area percent of the spatial annotations (polygons, masks)\n                for reporting covered annotations, useful with the Check object visibility option.",
+    "Matchonlyvisiblepart": "Match only visible parts - Use only the visible part of the masks and polygons in comparisons.",
+    "General": "General",
+    "Compareattributes": "Compare attributes",
+    "KeypointComparison": "Keypoint Comparison",
+    "LineComparison": "Line Comparison",
+    "Checkorientation": "Check orientation",
+    "GroupComparison": "Group Comparison",
+    "Comparegroups": "Compare groups",
+    "SegmentationComparis": "Segmentation Comparison",
+    "Checkobjectvisibilit_1": "Check object visibility",
+    "Matchonlyvisiblepart_1": "Match only visible parts"
+  },
+  "analytics-page_task-quality_task-quality-component_tsx": {
+    "Qualityreportsarenot": "Quality reports are not computed unless the GT job is in the",
+    "completedstate": "completed state",
+    "and": "and",
+    "acceptancestage": "acceptance stage."
+  },
+  "analytics-page_views_analytics-card_tsx": {},
+  "analytics-page_views_histogram-view_tsx": {},
+  "annotation-page_annotation-page_tsx": {
+    "Press": "Press",
+    "here": "here",
+    "ifyouwouldliketocont": "if you would like to continue",
+    "Add": "Add",
+    "thefirstoneforeditin": " the first one for editing annotation."
+  },
+  "annotation-page_annotations-actions_annotations-actions-modal_tsx": {
+    "Actionsallowexecutin": "Actions allow executing certain algorithms on",
+    "filtered": "filtered",
+    "annotations": "annotations.",
+    "Itaffectsonlytheloca": "It affects only the local browser state.",
+    "Onceanactionhasfinis": "Once an action has finished,",
+    "itcannotbereverted": "it cannot be reverted.",
+    "Youmayreloadthepaget": "You may reload the page to get annotations from the server.",
+    "Itisstronglyrecommen": "It is strongly recommended to review the changes",
+    "beforesavingannotati": "before saving annotations to the server.",
+    "Recommendation": "Recommendation:",
+    "Clicktosavethejob": "Click to save the job",
+    "Recommendation_1": "Recommendation:",
+    "Clicktodisableautoma": "Click to disable automatic saving",
+    "1Selectaction": "1. Select action",
+    "2Specifyframestoappl": "2. Specify frames to apply the action",
+    "Startingfromframe": "Starting from frame",
+    "uptoframe": "up to frame",
+    "Orchooseoneofpredefi": "Or choose one of predefined options",
+    "Currentframe": "Current frame",
+    "Allframes": "All frames",
+    "Fromcurrent": "From current",
+    "Uptocurrent": "Up to current",
+    "3Setupactionparamete": "3. Setup action parameters",
+    "Run": "Run"
+  },
+  "annotation-page_appearance-block_tsx": {
+    "Appearance": "Appearance",
+    "Colorby": "Color by",
+    "Opacity": "Opacity",
+    "Selectedopacity": "Selected opacity",
+    "Outlinedborders": "Outlined borders",
+    "Showbitmap": "Show bitmap",
+    "Showprojections": "Show projections"
+  },
+  "annotation-page_attribute-annotation-workspace_attribute-annotation-sidebar_attribute-annotation-sidebar_tsx": {
+    "Noattributesfound": "No attributes found",
+    "Noobjectsfound": "No objects found"
+  },
+  "annotation-page_attribute-annotation-workspace_attribute-annotation-sidebar_attribute-editor_tsx": {
+    "0": "0:",
+    "1": "1:",
+    "Checkbox": "Checkbox:",
+    "Values": "Values:",
+    "Values_1": "Values:",
+    "Number": "Number:",
+    "Text": "Text:",
+    "From": "From:",
+    "To": "To:",
+    "Step": "Step:"
+  },
+  "annotation-page_attribute-annotation-workspace_attribute-annotation-sidebar_attribute-switcher_tsx": {},
+  "annotation-page_attribute-annotation-workspace_attribute-annotation-sidebar_object-basics-edtior_tsx": {},
+  "annotation-page_attribute-annotation-workspace_attribute-annotation-sidebar_object-switcher_tsx": {},
+  "annotation-page_attribute-annotation-workspace_attribute-annotation-workspace_tsx": {},
+  "annotation-page_canvas_grid-layout_canvas-layout_conf_tsx": {},
+  "annotation-page_canvas_grid-layout_canvas-layout_tsx": {
+    "Undefinedview": "Undefined view"
+  },
+  "annotation-page_canvas_views_canvas2d_brush-tools_tsx": {
+    "Circle": "Circle",
+    "Square": "Square"
+  },
+  "annotation-page_canvas_views_canvas2d_canvas-context-menu_tsx": {
+    "Openanissue": "Open an issue ...",
+    "Quickissueincorrectp": "Quick issue: incorrect position",
+    "Quickissueincorrecta": "Quick issue: incorrect attribute",
+    "Copyannotation": "Copy annotation"
+  },
+  "annotation-page_canvas_views_canvas2d_canvas-hints_tsx": {
+    "Hide": "Hide"
+  },
+  "annotation-page_canvas_views_canvas2d_canvas-point-context-menu_tsx": {
+    "Deletepoint": "Delete point",
+    "Setstartpoint": "Set start point"
+  },
+  "annotation-page_canvas_views_canvas2d_canvas-wrapper_tsx": {},
+  "annotation-page_canvas_views_canvas2d_draggable-hoc_tsx": {},
+  "annotation-page_canvas_views_canvas2d_gamma-filter_tsx": {
+    "Gamma": "Gamma"
+  },
+  "annotation-page_canvas_views_canvas2d_image-setups-content_tsx": {
+    "Imagegrid": "Image grid",
+    "Size": "Size",
+    "Color": "Color",
+    "Opacity": "Opacity",
+    "White": "White",
+    "Black": "Black",
+    "Red": "Red",
+    "Green": "Green",
+    "Blue": "Blue",
+    "Colorsettings": "Color settings",
+    "Brightness": "Brightness",
+    "Contrast": "Contrast",
+    "Saturation": "Saturation",
+    "Resetcolorsettings": "Reset color settings"
+  },
+  "annotation-page_canvas_views_canvas3d_canvas-wrapper3D_tsx": {
+    "U": "U",
+    "I": "I",
+    "O": "O",
+    "J": "J",
+    "K": "K",
+    "L": "L",
+    "Top": "Top",
+    "Side": "Side",
+    "Front": "Front"
+  },
+  "annotation-page_canvas_views_context-image_context-image-selector_tsx": {
+    "Clicktheimagetodispl": "Click the image to display it as a context image"
+  },
+  "annotation-page_canvas_views_context-image_context-image_tsx": {
+    "Nodata": "No data"
+  },
+  "annotation-page_review-workspace_controls-side-bar_controls-side-bar_tsx": {},
+  "annotation-page_review-workspace_controls-side-bar_issue-control_tsx": {},
+  "annotation-page_review-workspace_review-workspace_tsx": {},
+  "annotation-page_review_conflict-label_tsx": {},
+  "annotation-page_review_create-issue-dialog_tsx": {
+    "Cancel": "Cancel",
+    "Submit": "Submit"
+  },
+  "annotation-page_review_hidden-issue-label_tsx": {},
+  "annotation-page_review_issue-dialog_tsx": {
+    "Reopen": "Reopen",
+    "Resolve": "Resolve",
+    "Nocommentsfound": "No comments found",
+    "Remove": "Remove",
+    "Comment": "Comment"
+  },
+  "annotation-page_review_issues-aggregator_tsx": {},
+  "annotation-page_single-shape-workspace_single-shape-sidebar_single-shape-sidebar_tsx": {
+    "Noavailablelabelsfou": "No available labels found",
+    "Annotate": "Annotate",
+    "ontheimageusing": "on the image, using",
+    "Skip": "Skip",
+    "Click": "Click",
+    "Skip_1": " Skip ",
+    "ifthereisnothingtoan": "if there is nothing to annotate",
+    "Hold": "Hold",
+    "Alt": " [Alt] ",
+    "buttontoavoiddrawing": "button to avoid drawing on click",
+    "Press": "Press",
+    "toundoacreatedobject": "to undo a created object",
+    "Press_1": "Press",
+    "toresetdrawingproces": "to reset drawing process",
+    "Press_2": "Press",
+    "tofinishdrawingproce": "to finish drawing process",
+    "Labelselector": "Label selector",
+    "Labeltypeselector": "Label type selector",
+    "Automaticallygotothe": "Automatically go to the next frame",
+    "Automaticallysavewhe": "Automatically save when finish",
+    "Navigateonlyemptyfra": "Navigate only empty frames",
+    "Predefinednumberofpo": "Predefined number of points",
+    "Numberofpoints": "Number of points"
+  },
+  "annotation-page_single-shape-workspace_single-shape-workspace_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_approximation-accuracy_tsx": {
+    "less": "less",
+    "more": "more",
+    "Points": "Points:"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_control-visibility-observer_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_controls-side-bar_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_cursor-control_tsx": {
+      "Cursor": "Cursor"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_draw-cuboid-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_draw-ellipse-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_draw-mask-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_draw-points-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_draw-polygon-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_draw-polyline-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_draw-rectangle-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_draw-shape-popover_tsx": {
+    "Label": "Label",
+    "Drawingmethod": "Drawing method",
+    "By2Points": "By 2 Points",
+    "By4Points": "By 4 Points",
+    "Drawingmethod_1": "Drawing method",
+    "Fromrectangle": "From rectangle",
+    "By4Points_1": "By 4 Points",
+    "Numberofpoints": "Number of points:",
+    "Shape": "Shape",
+    "Track": "Track"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_draw-skeleton-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_fit-control_tsx": {
+      "FitImage": "Fit the image [Double Click]"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_group-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_handle-popover-visibility_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_interactor-tooltips_tsx": {
+    "Youcanpreventserverr": "You can prevent server requests holding",
+    "Ctrl": " Ctrl ",
+    "key": "key",
+    "Positivepointscanbea": "Positive points can be added by left-clicking the image.",
+    "Negativepointscanbea": "Negative points can be added by right-clicking the image.",
+    "Selectaninteractorto": "Select an interactor to see help message"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_join-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_merge-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_move-control_tsx": {
+      "MoveTheImage": "Move the image"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_opencv-control_tsx": {
+    "Noavailabletrackersf": "No available trackers found",
+    "Label": "Label",
+    "Tracker": "Tracker",
+    "Track": "Track",
+    "OpenCV": "OpenCV",
+    "OpenCVisloading": "OpenCV is loading",
+    "ReloadOpenCV": "Reload OpenCV"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_resize-control_tsx": {
+      "SelectRegion": "Select a region of interest"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_rotate-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_setup-tag-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_setup-tag-popover_tsx": {
+    "Setuptag": "Setup tag",
+    "Label": "Label"
+  },
+  "annotation-page_standard-workspace_controls-side-bar_slice-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_split-control_tsx": {},
+  "annotation-page_standard-workspace_controls-side-bar_tools-control_tsx": {
+    "Convertmaskstopolygo": "Convert masks to polygons",
+    "Label": "Label",
+    "Noavailabletrackersf": "No available trackers found",
+    "Tracker": "Tracker",
+    "Track": "Track",
+    "Noavailableinteracto": "No available interactors found",
+    "Interactor": "Interactor",
+    "Interact": "Interact",
+    "Noavailabledetectors": "No available detectors found",
+    "AITools": "AI Tools",
+    "Waitingforaserverres": "Waiting for a server response.."
+  },
+  "annotation-page_standard-workspace_objects-side-bar_color-picker_tsx": {
+    "Reset": "Reset",
+    "Cancel": "Cancel",
+    "Ok": "Ok",
+    "Selectcolor": "Select color"
+  },
+  "annotation-page_standard-workspace_objects-side-bar_issues-list_tsx": {
+    "": "…"
+  },
+  "annotation-page_standard-workspace_objects-side-bar_label-item_tsx": {
+    "": " "
+  },
+  "annotation-page_standard-workspace_objects-side-bar_label-key-selector-popover_tsx": {},
+  "annotation-page_standard-workspace_objects-side-bar_labels-list_tsx": {},
+  "annotation-page_standard-workspace_objects-side-bar_object-item-attribute_tsx": {},
+  "annotation-page_standard-workspace_objects-side-bar_object-item-basics_tsx": {
+    "GT": "GT"
+  },
+  "annotation-page_standard-workspace_objects-side-bar_object-item-buttons_tsx": {},
+  "annotation-page_standard-workspace_objects-side-bar_object-item-details_tsx": {
+    "DETAILS": "DETAILS"
+  },
+  "annotation-page_standard-workspace_objects-side-bar_object-item-element_tsx": {},
+  "annotation-page_standard-workspace_objects-side-bar_object-item-menu_tsx": {
+    "CreateobjectURL": "Create object URL",
+    "Makeacopy": "Make a copy",
+    "Edit": "Edit",
+    "Slice": "Slice",
+    "Propagate": "Propagate",
+    "Switchorientation": "Switch orientation",
+    "Resetperspective": "Reset perspective",
+    "Tobackground": "To background",
+    "Toforeground": "To foreground",
+    "Remove": "Remove"
+  },
+  "annotation-page_standard-workspace_objects-side-bar_object-item_tsx": {
+    "PARTS": "PARTS"
+  },
+  "annotation-page_standard-workspace_objects-side-bar_objects-list-header_tsx": {},
+  "annotation-page_standard-workspace_objects-side-bar_objects-list_tsx": {},
+  "annotation-page_standard-workspace_objects-side-bar_objects-side-bar_tsx": {
+    "Objects": "Objects",
+    "Labels": "Labels",
+    "Issues": "Issues"
+  },
+  "annotation-page_standard-workspace_objects-side-bar_states-ordering-selector_tsx": {
+    "Sortby": "Sort by"
+  },
+  "annotation-page_standard-workspace_propagate-confirm_tsx": {
+    "Pleasespecifyadirect": "Please, specify a direction",
+    "Howmanycopiesdoyouwa": "How many copies do you want to create?",
+    "Orspecifyarangewhere": "Or specify a range where copies will be created"
+  },
+  "annotation-page_standard-workspace_remove-confirm_tsx": {},
+  "annotation-page_standard-workspace_standard-workspace_tsx": {},
+  "annotation-page_standard3D-workspace_controls-side-bar_controls-side-bar_tsx": {},
+  "annotation-page_standard3D-workspace_standard3D-workspace_tsx": {},
+  "annotation-page_tag-annotation-workspace_frame-tags_tsx": {},
+  "annotation-page_tag-annotation-workspace_tag-annotation-sidebar_shortcuts-select_tsx": {
+    "Shortcutsforlabels": "Shortcuts for labels:",
+    "None": "None"
+  },
+  "annotation-page_tag-annotation-workspace_tag-annotation-sidebar_tag-annotation-sidebar_tsx": {
+    "Cantplacetagonthisfr": "Can't place tag on this frame.",
+    "Taglabel": "Tag label:",
+    "Automaticallygotothe": "Automatically go to the next frame",
+    "Use": "Use",
+    "N": "N",
+    "ordigits": "or digits",
+    "09": "0-9",
+    "toaddselectedtagAdd": "to add selected tag.n                            Add",
+    "Shift": "Shift",
+    "modifiertoremovesele": "modifier to remove selected tag."
+  },
+  "annotation-page_tag-annotation-workspace_tag-annotation-workspace_tsx": {},
+  "annotation-page_top-bar_annotation-menu_tsx": {
+    "Youaregoingtoremovet": "You are going to remove the annotations from the client.",
+    "Itwillstayontheserve": "It will stay on the server till you save the job. Continue?",
+    "SelectRange": "Select Range",
+    "From": "From:",
+    "To": "To:",
+    "Deleteonlykeyframesf": "Delete only keyframes for tracks",
+    "Uploadannotations": "Upload annotations",
+    "Exportjobdataset": "Export job dataset",
+    "Removeannotations": "Remove annotations",
+    "Runactions": "Run actions",
+    "Openthetask": "Open the task",
+    "Finishthejob": "Finish the job",
+    "Renewthejob": "Renew the job"
+  },
+  "annotation-page_top-bar_filters-modal_tsx": {
+    "Clearfilters": "Clear filters",
+    "Cancel": "Cancel",
+    "Submit": "Submit",
+    "Recentlyused": "Recently used",
+    "": " "
+  },
+  "annotation-page_top-bar_left-group_tsx": {
+    "CVATissavingyouranno": "CVAT is saving your annotations, please wait",
+    "Menu": "Menu",
+    "Undo": "Undo",
+    "Redo": "Redo",
+    "Done": "Done",
+    "Block": "Block"
+  },
+  "annotation-page_top-bar_player-buttons_tsx": {},
+  "annotation-page_top-bar_player-navigation_tsx": {},
+  "annotation-page_top-bar_right-group_tsx": {
+    "Fullscreen": "Fullscreen",
+    "Guide": "Guide",
+    "Info": "Info",
+    "Filters": "Filters"
+  },
+  "annotation-page_top-bar_statistics-modal_tsx": {
+    "Label": "Label",
+    "": " ⮕ ",
+    "Tag": "Tag",
+    "Manually": "Manually",
+    "Interpolated": "Interpolated",
+    "Total": "Total",
+    "Label_1": "Label",
+    "Total_1": "Total",
+    "Overview": "Overview",
+    "Assignee": "Assignee",
+    "Startframe": "Start frame",
+    "Stopframe": "Stop frame",
+    "Frames": "Frames",
+    "Bugtracker": "Bug tracker",
+    "Annotationsstatistic": "Annotations statistics"
+  },
+  "annotation-page_top-bar_top-bar_tsx": {},
+  "change-password-modal_change-password-form_tsx": {
+    "Submit": "Submit",
+    "CurrentPassword": "Current password",
+    "CurrentPasswordMsg": "Please input your current password!",
+      "NewPassword": "New password",
+    "NewPasswordMsg": "Please input new password!",
+      "ConfirmPassword": "Confirm new password",
+    "ConfirmPasswordMsg": "Please confirm your new password!"
+  },
+  "change-password-modal_change-password-modal_tsx": {
+    "Changepassword": "Change password"
+  },
+  "cloud-storages-page_cloud-storage-item_tsx": {
+    "Provider": "Provider:",
+    "Created": "Created",
+    "on": "on",
+    "Lastupdated": "Last updated",
+    "Update": "Update",
+    "Delete": "Delete"
+  },
+  "cloud-storages-page_cloud-storage-status_tsx": {
+    "Loading": "Loading ...",
+    "Error": "Error",
+    "Status": "Status:"
+  },
+  "cloud-storages-page_cloud-storages-list_tsx": {},
+  "cloud-storages-page_cloud-storages-page_tsx": {},
+  "cloud-storages-page_empty-cloud-storages-list_tsx": {
+    "Noresultsmatchedyour": "No results matched your search found...",
+    "Nocloudstoragesattac": "No cloud storages attached yet ...",
+    "Togetstartedwithyour": "To get started with your cloud storage",
+    "attachanewone": "attach a new one"
+  },
+  "cloud-storages-page_top-bar_tsx": {},
+  "common_cvat-dropdown-menu-paper_index_tsx": {},
+  "common_cvat-tooltip_tsx": {},
+  "common_go-back-button_tsx": {
+    "Back": "Back"
+  },
+  "common_loading-spinner_tsx": {},
+  "common_preview_tsx": {},
+  "create-cloud-storage-page_cloud-storage-form_tsx": {
+    "Keyfile": "Key file",
+    "Attachafile": "Attach a file",
+    "Keyidandsecretaccess": "Key id and secret access key pair",
+    "Anonymousaccess": "Anonymous access",
+    "AccountnameandSAStok": "Account name and SAS token",
+    "Anonymousaccess_1": "Anonymous access",
+    "Connectionstring": "Connection string",
+    "Keyfile_1": "Key file",
+    "Anonymousaccess_2": "Anonymous access",
+    "AWSS3": "AWS S3",
+    "AzureBlobContainer": "Azure Blob Container",
+    "GoogleCloudStorage": "Google Cloud Storage",
+    "Prefix": "Prefix",
+    "Cancel": "Cancel",
+    "DisplayName": "Display name",
+    "AnyUsefulDescription": "Any useful description",
+    "Description": "Description",
+    "Update": "Update",
+    "Submit": "Submit",
+    "Provider": "Provider"
+  },
+  "create-cloud-storage-page_create-cloud-storage-page_tsx": {
+    "Createacloudstorage": "Create a cloud storage"
+  },
+  "create-cloud-storage-page_gcs-locatiion_tsx": {},
+  "create-cloud-storage-page_location_tsx": {
+    "Addregion": "Add region"
+  },
+  "create-cloud-storage-page_manifests-manager_tsx": {
+    "Manifests": "Manifests",
+    "ManifestsJsonl": "manifest.jsonl",
+    "ManifestsAlertMsg": "We highly recommend attaching a manifest file to reduce the number of requests to the bucket",
+    "Addmanifest": "Add manifest"
+  },
+  "create-cloud-storage-page_s3-region_tsx": {},
+  "create-job-page_create-job-page_tsx": {
+    "Addanewjob": "Add a new job"
+  },
+  "create-job-page_job-form_tsx": {
+    "Groundtruth": "Ground truth",
+    "Random": "Random",
+    "Quantity": "Quantity %",
+    "Framecount": "Frame count",
+    "Submit": "Submit",
+    "Seed": "Submit",
+    "JobType": "Job type",
+    "JobTypeMessage": "Please, specify Job type",
+    "FrameSelectionMethod": "Frame selection method",
+      "FrameSelectionMethodMessage": "Please, specify frame selection method"
+  },
+  "create-organization-page_create-organization-form_tsx": {
+    "Cancel": "Cancel",
+    "Submit": "Submit",
+    "ShortName": "Short name",
+    "FullName": "Full name",
+    "description": "description",
+    "email": "email",
+    "phoneNumber": "phoneNumber",
+    "location": "location"
+  },
+  "create-organization-page_create-organization-page_tsx": {
+    "Createaneworganizati": "Create a new organization"
+  },
+  "create-project-page_create-project-content_tsx": {
+    "Labels": "Labels:",
+    "Name": "Name:",
+    "Advancedconfiguratio": "Advanced configuration",
+    "SubmitOpen": "Submit & Open",
+    "SubmitContinue": "Submit & Continue",
+    "label": "Issue tracker",
+    "Specifysourcestorage": "Attach issue tracker where the project is described",
+    "Specifysourcestorage_1": "Specify target storage for export resources like annotation, backups",
+    "Specifysourcestorage_2": "Specify source storage for import resources like annotation, backups"
+  },
+  "create-project-page_create-project-page_tsx": {
+    "Createanewproject": "Create a new project"
+  },
+  "create-task-page_advanced-configuration-form_tsx": {
+    "CopydataintoCVAT": "Copy data into CVAT",
+    "Lexicographical": "Lexicographical",
+    "Natural": "Natural",
+    "Predefined": "Predefined",
+    "Random": "Random",
+    "Preferzipchunks": "Prefer zip chunks",
+    "Usecache": "Use cache",
+    "Definesanumberoffram": "Defines a number of frames to be packed in a chunk when send from client to server. Server\n                        defines automatically if empty.",
+    "Recommendedvalues": "Recommended values:",
+    "1080porless36": "1080p or less: 36",
+    "2korless816": "2k or less: 8 - 16",
+    "4korless48": "4k or less: 4 - 8",
+    "More14": "More: 1 - 4"
+  },
+  "create-task-page_basic-configuration-form_tsx": {
+    "Name": "Name",
+      "Type": "类型",
+    "SelectTaskType": "Select task type",
+    "Youcansubstituteinth": "You can substitute in the template:",
+    "sometextanytext": "some_text - any text",
+    "": "{{",
+    "index": "index",
+    "_1": "}}",
+    "indexfileinset": "- index file in set",
+    "_2": "{{",
+    "filename": "file_name",
+    "_3": "}}",
+    "nameoffile": "- name of file",
+    "Example": "Example:",
+    "Whenformingthenameat": "When forming the name, a template is used.",
+    "_4": " "
+  },
+  "create-task-page_create-task-content_tsx": {
+    "Project": "Project",
+    "Subset": "Subset",
+    "Labels": "Labels",
+    "Projectlabelswillbeu": "Project labels will be used",
+    "": "*",
+    "Labels_1": "Labels",
+    "_1": "*",
+    "Selectfiles": "Select files",
+    "Advancedconfiguratio": "Advanced configuration",
+    "SubmitOpen": "Submit & Open",
+    "SubmitContinue": "Submit & Continue",
+    "Submit": "Submit",
+    "tasks": "tasks",
+    "Basicconfiguration": "Basic configuration"
+  },
+  "create-task-page_create-task-page_tsx": {
+    "Createanewtask": "Create a new task"
+  },
+  "create-task-page_multi-task-progress_tsx": {
+    "Finished": "Finished",
+    "Failedfiles": "Failed files",
+    "Retryfailedtasks": "Retry failed tasks",
+    "Retrycancelledtasks": "Retry cancelled tasks",
+    "Ok": "Ok",
+    "Cancelpendingtasks": "Cancel pending tasks"
+  },
+  "create-task-page_project-search-field_tsx": {},
+  "create-task-page_project-subset-field_tsx": {
+      "subset-field": "Input subset"
+  },
+  "customizable-components_index_tsx": {
+      "Save": "Save current changes"
+  },
+  "cvat-app_tsx": {
+    "Itisstronglyrecommen": "It is strongly recommended to update your browser.",
+    "Cannotconnecttothese": "Cannot connect to the server."
+  },
+  "dropdown-menu_tsx": {},
+  "email-confirmation-pages_email-confirmed_tsx": {
+    "Youremailisconfirmed": "Your email is confirmed",
+    "Orclickthislink": "Or click this link"
+  },
+  "email-confirmation-pages_email-verification-sent_tsx": {
+    "Pleaseconfirmyourema": "Please, confirm your email",
+    "Gotologinpage": "Go to login page"
+  },
+  "email-confirmation-pages_incorrect-email-confirmation_tsx": {
+    "Thisemailconfirmatio": "This e-mail confirmation link expired or is invalid.",
+    "Pleaseissueanewemail": "Please issue a new e-mail confirmation request.",
+    "Gotologinpage": "Go to login page"
+  },
+  "export-backup_export-backup-modal_tsx": {
+    "Customname": "Custom name"
+  },
+  "export-dataset_export-dataset-modal_tsx": {
+    "Exportformat": "Export format",
+    "Saveimages": "Save images",
+    "Customname": "Custom name"
+  },
+  "file-manager_cloud-storages-tab_tsx": {},
+  "file-manager_file-manager_tsx": {
+    "CloudStorage": "Cloud Storage",
+    "MyComputer": "My computer",
+    "FileShare": "Connected file share",
+    "RemoteSources": "Remote sources"
+  },
+  "file-manager_local-files_tsx": {
+    "Clickordragfilestoth": "Click or drag files to this area"
+  },
+  "file-manager_remote-browser_tsx": {
+    "Pleasebesureyouhad": "Please, be sure you had",
+    "mounted": "mounted",
+    "sharebeforeyoubuiltC": "share before you built CVAT and the shared storage contains files",
+    "Thereisnointersectio": "There is no intersection between the specified prefix and the default one"
+  },
+  "global-error-boundary_global-error-boundary_tsx": {
+    "Whathashappened": "What has happened?",
+    "Programerrorhasjusto": "Program error has just occurred",
+    "WhatshouldIdo": "What should I do?",
+    "": " ",
+    "Copy": "Copy",
+    "_1": " ",
+    "theerrormessagetocli": "the error message to clipboard",
+    "Notifyanadministrato": "Notify an administrator or submit the issue directly on",
+    "GitHub": "GitHub.",
+    "Pleaseprovidealso": "Please, provide also:",
+    "Stepstoreproducethei": "Steps to reproduce the issue",
+    "Youroperatingsystema": "Your operating system and browser version",
+    "CVATversion": "CVAT version",
+    "Server": "Server:",
+    "Core": "Core:",
+    "Canvas": "Canvas:",
+    "UI": "UI:",
+    "Press": "Press",
+    "here": "here",
+    "ifyouwishCVATtriedto": "if you wish CVAT tried to restore your annotation progress or",
+    "update": "update",
+    "thepage": "the page",
+    "Update": "Update",
+    "thepage_1": "the page"
+  },
+  "header_header_tsx": {
+    "Whatsnew": "What's new?",
+    "MITLicense": "MIT License",
+    "FindusonDiscord": "Find us on Discord",
+    "MITLicense_1": "MIT License",
+    "Serverversion": "Server version:",
+    "Coreversion": "Core version:",
+    "Canvasversion": "Canvas version:",
+    "UIversion": "UI version:",
+    "Adminpage": "Admin page",
+    "Settings": "Settings",
+    "Invitations": "Invitations",
+    "Create": "Create",
+    "Switchorganization": "Switch organization",
+    "Personalworkspace": "Personal workspace",
+    "Settings_1": "Settings",
+    "About": "About",
+    "Changepassword": "Change password",
+    "Logout": "Logout",
+    "Projects": "Projects",
+    "Tasks": "Tasks",
+    "Jobs": "Jobs",
+    "CloudStorages": "Cloud Storages",
+    "Models": "Models",
+    "Analytics": "Analytics",
+    "Organization": "Organization"
+  },
+  "header_organizations-search_tsx": {},
+  "header_settings-modal_player-settings_tsx": {
+    "Playerstep": "Player step",
+    "Numberofframesskippe": "Number of frames skipped when selecting",
+    "or": "or",
+    "Playerspeed": "Player speed",
+    "Fastest": "Fastest",
+    "Fast": "Fast",
+    "Usual": "Usual",
+    "Slow": "Slow",
+    "Slower": "Slower",
+    "Slowest": "Slowest",
+    "Selectcanvasbackgrou": "Select canvas background color",
+    "Resetzoom": "Reset zoom",
+    "Fitimageafterchangin": "Fit image after changing frame",
+    "Rotateallimages": "Rotate all images",
+    "Rotateallimagessimul": "Rotate all images simultaneously",
+    "Smoothimage": "Smooth image",
+    "Smoothimagewhenzoomi": "Smooth image when zoom-in it",
+    "Showdeletedframes": "Show deleted frames",
+    "Youwillbeabletonavig": "You will be able to navigate and restore deleted frames"
+  },
+  "header_settings-modal_settings-modal_tsx": {
+    "Save": "Save",
+    "Close": "Close",
+    "Player": "Player",
+    "Workspace": "Workspace"
+  },
+  "header_settings-modal_workspace-settings_tsx": {
+    "Enableautosave": "Enable auto save",
+    "Autosaveevery": "Auto save every",
+    "minutes": "minutes",
+    "Showallinterpolation": "Show all interpolation tracks",
+    "Showhiddeninterpolat": "Show hidden interpolated objects in the side panel",
+    "Alwaysshowobjectdeta": "Always show object details",
+    "Showtextforanobjecto": "Show text for an object on the canvas not only when the object is activated",
+    "Contentofatext": "Content of a text",
+    "ID": "ID",
+    "Label": "Label",
+    "Attributes": "Attributes",
+    "Source": "Source",
+    "Descriptions": "Descriptions",
+    "Positionofatext": "Position of a text",
+    "Fontsizeofatext": "Font size of a text",
+    "Auto": "Auto",
+    "Center": "Center",
+    "Automaticbordering": "Automatic bordering",
+    "Enableautomaticborde": "Enable automatic bordering for polygons and polylines during drawing/editing",
+    "Intelligentpolygoncr": "Intelligent polygon cropping",
+    "Trytocroppolygonsaut": "Try to crop polygons automatically when editing",
+    "Showtagsonframe": "Show tags on frame",
+    "Showframetagsintheco": "Show frame tags in the corner of the workspace",
+    "Attributeannotationm": "Attribute annotation mode (AAM) zoom margin",
+    "Controlpointssize": "Control points size",
+    "Defaultnumberofpoint": "Default number of points in polygon approximation",
+    "Worksforserverlessin": "Works for serverless interactors and OpenCV scissors"
+  },
+  "import-backup_import-backup-modal_tsx": {
+    "Clickordragfiletothi": "Click or drag file to this area",
+    "Filename": "File name"
+  },
+  "import-dataset_import-dataset-modal_tsx": {
+    "Clickordragfiletothi": "Click or drag file to this area",
+    "Filename": "File name",
+    "Convertmaskstopolygo": "Convert masks to polygons",
+    "Usedefaultsettings": "Use default settings"
+  },
+  "import-dataset_import-dataset-status-modal_tsx": {},
+  "invitation-watcher_invitation-watcher_tsx": {},
+  "invitations-page_empty-list_tsx": {
+    "Youdonothaveactivein": "You do not have active invitations"
+  },
+  "invitations-page_invitation-item_tsx": {
+    "hasinvitedyoutojoint": "has invited you to join the",
+    "organization": "organization",
+    "Accept": "Accept",
+    "Remove": "Remove",
+    "Wouldyouliketodeclin": "Would you like to decline the invitation to the",
+    "organization_1": "organization",
+    "Decline": "Decline"
+  },
+  "invitations-page_invitations-list_tsx": {},
+  "invitations-page_invitations-page_tsx": {},
+  "job-item_job-actions-menu_tsx": {
+    "Gotothetask": "Go to the task",
+    "Gototheproject": "Go to the project",
+    "Gotothebugtracker": "Go to the bug tracker",
+    "Importannotations": "Import annotations",
+    "Exportannotations": "Export annotations",
+    "Viewanalytics": "View analytics",
+    "Finishthejob": "Finish the job",
+    "Renewthejob": "Renew the job",
+    "Delete": "Delete"
+  },
+  "job-item_job-item_tsx": {
+    "Youdonothavepermissi": "You do not have permissions",
+    "Couldnotfetchcheckco": "Could not fetch, check console output",
+    "Loading": "Loading..",
+    "Unsolvedissues": "Unsolved issues",
+    "Resolvedissues": "Resolved issues",
+    "Groundtruth": "Ground truth",
+    "Createdon": "Created on",
+    "Lastupdated": "Last updated",
+    "Assignee": "Assignee:",
+    "Stage": "Stage:",
+    "State": "State:",
+    "Duration": "Duration:",
+    "Framerange": "Frame range:",
+    "Framecount": "Frame count:"
+  },
+  "jobs-page_job-card_tsx": {
+    "ID": "ID:",
+    "Stage": "Stage:",
+    "State": "State:",
+    "Size": "Size:",
+    "Assignee": "Assignee:"
+  },
+  "jobs-page_jobs-content_tsx": {},
+  "jobs-page_jobs-page_tsx": {
+    "Noresultsmatchedyour": "No results matched your search..."
+  },
+  "jobs-page_top-bar_tsx": {},
+  "label-selector_label-selector_tsx": {},
+  "labels-editor_constructor-creator_tsx": {},
+  "labels-editor_constructor-updater_tsx": {},
+  "labels-editor_constructor-viewer-item_tsx": {},
+  "labels-editor_constructor-viewer_tsx": {
+    "Addlabel": "Add label",
+    "Setupskeleton": "Setup skeleton",
+    "Frommodel": "From model"
+  },
+  "labels-editor_label-form_tsx": {
+    "Select": "Select",
+    "Radio": "Radio",
+    "Checkbox": "Checkbox",
+    "Text": "Text",
+    "Number": "Number",
+    "False": "False",
+    "True": "True",
+    "Mutable": "Mutable",
+    "Skeleton": "Skeleton",
+    "Addanattribute": "Add an attribute",
+    "Cancel": "Cancel",
+    "LabelName": "Label name",
+    "saveTooltipTitle1": "Save the label and return",
+    "cancelTooltipTitle1": "Do not save the label and return",
+    "saveTooltipTitle2": "Save the label and create one more",
+    "buttonText1": "Done",
+    "buttonText2": "Continue",
+    "AttributeValues": "Attribute values",
+    "AttributeValuesTooltipTitle": "Press enter to add a new value",
+    "colorTooltipTitle": "Change color of the label"
+  },
+  "labels-editor_labels-editor_tsx": {
+    "Raw": "Raw",
+    "Constructor": "Constructor"
+  },
+  "labels-editor_pick-from-model_tsx": {
+    "Selectamodeltopickla": "Select a model to pick labels:",
+    "Done": "Done",
+    "Nodeployedmodelsfoun": "No deployed models found",
+    "Cancel": "Cancel"
+  },
+  "labels-editor_raw-viewer_tsx": {
+    "Followinglabelsarego": "Following labels are going to be removed:",
+    "Followingattributesa": "Following attributes are going to be removed:",
+    "Allrelatedannotation": "All related annotations will be destroyed. Continue?",
+    "Done": "Done",
+    "Reset": "Reset",
+    "TooltipTitle": "Save labels",
+    "TooltipTitle1": "Reset all changes"
+  },
+  "labels-editor_skeleton-configurator_tsx": {
+      "TooltipTitle": "Upload a skeleton from SVG"
+  },
+  "labels-editor_skeleton-element-context-menu_tsx": {
+    "Configure": "Configure",
+    "Delete": "Delete"
+  },
+  "layout-grid_layout-grid_tsx": {},
+  "login-page_login-form_tsx": {
+    "Forgotpassword": "Forgot password?",
+    "Newuser": "New user?",
+    "Createanaccount": "Create an account",
+    "Signin": "Sign in",
+    "Emailorusername": "Email or username",
+    "Next": "Next"
+  },
+  "login-page_login-page_tsx": {},
+  "login-with-token_login-with-token_tsx": {},
+  "logout-component_tsx": {},
+  "md-guide_guide-page_tsx": {
+    "Submit": "Submit"
+  },
+  "md-guide_md-guide-control_tsx": {
+    "Edit": "Edit"
+  },
+  "model-runner-modal_detector-runner_tsx": {
+    "Model": "Model:",
+    "Convertmaskstopolygo": "Convert masks to polygons",
+    "Cleanpreviousannotat": "Clean previous annotations",
+    "Threshold": "Threshold",
+    "Maximumdistance": "Maximum distance",
+    "Annotate": "Annotate"
+  },
+  "model-runner-modal_labels-mapper_tsx": {
+    "Skeletonpointsmappin": "Skeleton points mapping:",
+    "Labelattributesmappi": "Label attributes mapping:"
+  },
+  "model-runner-modal_model-runner-dialog_tsx": {},
+  "model-runner-modal_object-mapper_tsx": {},
+  "models-page_deployed-model-item_tsx": {
+    "Systemmodel": "System model",
+    "Labels": "Labels:",
+    "Provider": "Provider",
+    "Type": "Type",
+    "Owner": "Owner"
+  },
+  "models-page_deployed-models-list_tsx": {},
+  "models-page_empty-list_tsx": {
+    "Nomodelsdeployedyet": "No models deployed yet...",
+    "Toannotateyourtasksa": "To annotate your tasks automatically",
+    "deployamodelwith": "deploy a model with",
+    "nuclio": "nuclio"
+  },
+  "models-page_models-filter-configuration_tsx": {},
+  "models-page_models-page_tsx": {},
+  "models-page_top-bar_tsx": {},
+  "move-task-modal_label-mapper-item_tsx": {},
+  "move-task-modal_move-task-modal_tsx": {
+    "Project": "Project:",
+    "Labelmapping": "Label mapping"
+  },
+  "organization-page_member-item_tsx": {
+    "Resendinvitation": "Resend invitation",
+    "Removeinvitation": "Remove invitation",
+    "Invitationpending": "Invitation pending",
+    "Owner": "Owner",
+    "Worker": "Worker",
+    "Supervisor": "Supervisor",
+    "Maintainer": "Maintainer"
+  },
+  "organization-page_members-list_tsx": {},
+  "organization-page_organization-page_tsx": {},
+  "organization-page_top-bar_tsx": {
+    "Toremovetheorganizat": "To remove the organization,\n                        enter its short name below",
+    "Setupwebhooks": "Setup webhooks",
+    "Removeorganization": "Remove organization",
+    "Actions": "Actions",
+    "Submit": "Submit",
+    "Addphonenumber": "Add phone number",
+    "Addemail": "Add email",
+    "Addlocation": "Add location",
+    "Pleaseconfirmleaving": "Please, confirm leaving the organization",
+    "Youwillnothaveaccess": ". You will not have access to the organization data anymore",
+    "Leaveorganization": "Leave organization",
+    "Invitemembers": "Invite members",
+    "InviteCVATuserstocol": "Invite CVAT users to collaborate",
+    "Iftheemailaddressisr": "If the email address is registered on CVAT, the user will be added to the organization",
+    "Worker": "Worker",
+    "Supervisor": "Supervisor",
+    "Maintainer": "Maintainer",
+    "Invitemore": "Invite more"
+  },
+  "plugins-entrypoint_tsx": {},
+  "project-page_details_tsx": {
+    "Assignedto": "Assigned to"
+  },
+  "project-page_project-page_tsx": {
+    "Createanewtask": "Create a new task",
+    "Createmultitasks": "Create multi tasks"
+  },
+  "project-page_top-bar_tsx": {
+    "Backtoprojects": "Back to projects",
+    "Actions": "Actions"
+  },
+  "projects-page_actions-menu_tsx": {
+    "Exportdataset": "Export dataset",
+    "Importdataset": "Import dataset",
+    "BackupProject": "Backup Project",
+    "Viewanalytics": "View analytics",
+    "Setupwebhooks": "Setup webhooks",
+    "Delete": "Delete"
+  },
+  "projects-page_empty-list_tsx": {
+    "Noresultsmatchedyour": "No results matched your search...",
+    "Noprojectscreatedyet": "No projects created yet ...",
+    "Togetstartedwithyour": "To get started with your annotation project",
+    "createanewone": "create a new one"
+  },
+  "projects-page_project-item_tsx": {},
+  "projects-page_project-list_tsx": {},
+  "projects-page_projects-page_tsx": {},
+  "projects-page_top-bar_tsx": {
+    "Createanewproject": "Create a new project",
+    "Createfrombackup": "Create from backup"
+  },
+  "register-page_register-form_tsx": {
+    "Createaccount": "Create account"
+  },
+  "register-page_register-page_tsx": {},
+  "reset-password-confirm-page_reset-password-confirm-form_tsx": {
+    "Changepassword": "Change password"
+  },
+  "reset-password-confirm-page_reset-password-confirm-page_tsx": {
+    "Changepassword": "Change password"
+  },
+  "reset-password-page_reset-password-form_tsx": {
+    "Forgotpassword": "Forgot password?",
+    "Letscreateanewone": "Let's create a new one",
+    "Wewillsendlinktoyour": "We will send link to your email",
+    "Send": "Send"
+  },
+  "reset-password-page_reset-password-page_tsx": {},
+  "resource-sorting-filtering_filtering_tsx": {
+    "Quickfilters": "Quick filters",
+    "Recent": "Recent",
+    "Reset": "Reset",
+    "Apply": "Apply",
+    "Filter": "Filter",
+    "Clearfilters": "Clear filters"
+  },
+  "resource-sorting-filtering_request-users_tsx": {},
+  "resource-sorting-filtering_sorting_tsx": {
+    "Sortby": "Sort by"
+  },
+  "select-cloud-storage_select-cloud-storage_tsx": {},
+  "setup-webhook-pages_create-webhook-page_tsx": {
+    "Backtowebhooks": "Back to webhooks"
+  },
+  "setup-webhook-pages_setup-webhook-content_tsx": {
+    "Setupawebhook": "Setup a webhook",
+    "Project": "Project",
+    "EnableSSL": "Enable SSL",
+    "Active": "Active",
+    "Send": "Send",
+    "everything": "everything",
+    "Selectindividualeven": "Select individual events",
+    "Submit": "Submit"
+  },
+  "setup-webhook-pages_update-webhook-page_tsx": {
+    "Backtowebhooks": "Back to webhooks"
+  },
+  "shortcuts-dialog_shortcuts-dialog_tsx": {},
+  "shortcuts_context_tsx": {},
+  "signing-common_cvat-signing-input_tsx": {},
+  "signing-common_signing-layout_tsx": {
+    "OpenData": "Open Data",
+    "AnnotationPlatform": "Annotation Platform"
+  },
+  "storage_source-storage-field_tsx": {
+      "storageLabel": "Source storage"
+  },
+  "storage_storage-field_tsx": {
+    "Local": "Local",
+    "Cloudstorage": "Cloud storage"
+  },
+  "storage_storage-with-switch-field_tsx": {},
+  "storage_target-storage-field_tsx": {
+      "storageLabel": "Target storage"
+  },
+  "task-page_bug-tracker-editor_tsx": {
+    "IssueTracker": "Issue Tracker",
+    "Opentheissue": "Open the issue",
+    "IssueTracker_1": "Issue Tracker"
+  },
+  "task-page_details_tsx": {
+    "Assignedto": "Assigned to",
+    "Subset": "Subset:"
+  },
+  "task-page_job-list_tsx": {
+    "Jobs": "Jobs",
+    "Copy": "Copy"
+  },
+  "task-page_task-page_tsx": {},
+  "task-page_top-bar_tsx": {
+    "Backtoproject": "Back to project",
+    "Backtotasks": "Back to tasks",
+    "Actions": "Actions"
+  },
+  "task-page_user-selector_tsx": {
+      "SelectUser": "Select a user"
+  },
+  "tasks-page_automatic-annotation-progress_tsx": {
+    "Automaticannotationr": "Automatic annotation request queued",
+    "Automaticannotationi": "Automatic annotation is in progress",
+    "Automaticannotationf": "Automatic annotation failed",
+    "Unknownstatusreceive": "Unknown status received",
+    "Automaticannotationa": "Automatic annotation accomplisted"
+  },
+  "tasks-page_empty-list_tsx": {
+    "Notaskscreatedyet": "No tasks created yet ...",
+    "Togetstartedwithyour": "To get started with your annotation project",
+    "createanewtask": "create a new task",
+    "ortryto": "or try to",
+    "createanewproject": "create a new project",
+    "Noresultsmatchedyour": "No results matched your search"
+  },
+  "tasks-page_task-item_tsx": {
+    "Open": "Open",
+    "Actions": "Actions"
+  },
+  "tasks-page_task-list_tsx": {},
+  "tasks-page_tasks-page_tsx": {},
+  "tasks-page_top-bar_tsx": {
+    "Createanewtask": "Create a new task",
+    "Createmultitasks": "Create multi tasks",
+    "Createfrombackup": "Create from backup"
+  },
+  "update-cloud-storage-page_update-cloud-storage-page_tsx": {},
+  "webhooks-page_empty-list_tsx": {
+    "Nowebhookscreatedyet": "No webhooks created yet ...",
+    "Noresultsmatchedyour": "No results matched your search"
+  },
+  "webhooks-page_top-bar_tsx": {},
+  "webhooks-page_webhook-item_tsx": {
+    "URL": "URL:",
+    "Events": "Events:",
+    "Ping": "Ping",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Actions": "Actions"
+  },
+  "webhooks-page_webhooks-list_tsx": {},
+  "webhooks-page_webhooks-page_tsx": {},
+    "reducer_notifications-reducer_ts": {
+      "AuthFailedMsg": "Could not check authorization on the server",
+      "LoginFailedMsg": "Could not login on the server",
+      "LogoutFailedMsg": "Could not logout from the server",
+      "RegisterFailedMsg": "Could not register on the server",
+      "RegisterSuccessMsg": "To use your account, you need to confirm the email address. We have sent an email with a confirmation link to",
+      "ChangePasswordSuccess": "New password has been saved.",
+        "ChangePasswordFailed": "Could not change password"
+  }
+}

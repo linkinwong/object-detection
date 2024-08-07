@@ -1,0 +1,49 @@
+2024-07-26 11:17:43,782 INFO    StreamThr :9768 [internal.py:wandb_internal():86] W&B internal server running at pid: 9768, started at: 2024-07-26 11:17:43.781395
+2024-07-26 11:17:43,783 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status
+2024-07-26 11:17:43,789 INFO    WriterThread:9768 [datastore.py:open_for_write():87] open: /Users/wangmeng/Downloads/model/ultralytics-main/wandb/offline-run-20240726_111743-yx6w05sw/run-yx6w05sw.wandb
+2024-07-26 11:17:43,795 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: run_start
+2024-07-26 11:17:43,803 DEBUG   HandlerThread:9768 [system_info.py:__init__():26] System info init
+2024-07-26 11:17:43,804 DEBUG   HandlerThread:9768 [system_info.py:__init__():41] System info init done
+2024-07-26 11:17:43,804 INFO    HandlerThread:9768 [system_monitor.py:start():194] Starting system monitor
+2024-07-26 11:17:43,804 INFO    SystemMonitor:9768 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-07-26 11:17:43,804 INFO    HandlerThread:9768 [system_monitor.py:probe():214] Collecting system info
+2024-07-26 11:17:43,804 INFO    SystemMonitor:9768 [interfaces.py:start():190] Started cpu monitoring
+2024-07-26 11:17:43,805 DEBUG   HandlerThread:9768 [system_info.py:probe():150] Probing system
+2024-07-26 11:17:43,805 INFO    SystemMonitor:9768 [interfaces.py:start():190] Started disk monitoring
+2024-07-26 11:17:43,807 INFO    SystemMonitor:9768 [interfaces.py:start():190] Started gpuapple monitoring
+2024-07-26 11:17:43,809 INFO    SystemMonitor:9768 [interfaces.py:start():190] Started memory monitoring
+2024-07-26 11:17:43,810 INFO    SystemMonitor:9768 [interfaces.py:start():190] Started network monitoring
+2024-07-26 11:17:43,812 DEBUG   HandlerThread:9768 [gitlib.py:_init_repo():56] git repository is invalid
+2024-07-26 11:17:43,812 DEBUG   HandlerThread:9768 [system_info.py:probe():198] Probing system done
+2024-07-26 11:17:43,812 DEBUG   HandlerThread:9768 [system_monitor.py:probe():223] {'os': 'macOS-13.5-arm64-arm-64bit', 'python': '3.10.11', 'heartbeatAt': '2024-07-26T03:17:43.805997', 'startedAt': '2024-07-26T03:17:43.772434', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/wangmeng/Downloads/model/ultralytics-main/train.py', 'codePathLocal': 'train.py', 'codePath': 'train.py', 'host': 'wangmengdeMacBook-Air.local', 'username': 'wangmeng', 'executable': '/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10', 'cpu_count': 8, 'cpu_count_logical': 8, 'cpu_freq': {'current': 3504, 'min': 600, 'max': 3504}, 'cpu_freq_per_core': [{'current': 3504, 'min': 600, 'max': 3504}], 'disk': {'/': {'total': 460.4317207336426, 'used': 11.12173843383789}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 8.0}}
+2024-07-26 11:17:43,812 INFO    HandlerThread:9768 [system_monitor.py:probe():224] Finished collecting system info
+2024-07-26 11:17:43,812 INFO    HandlerThread:9768 [system_monitor.py:probe():227] Publishing system info
+2024-07-26 11:17:43,813 INFO    HandlerThread:9768 [system_monitor.py:probe():229] Finished publishing system info
+2024-07-26 11:17:44,001 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: python_packages
+2024-07-26 11:17:48,803 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:17:48,803 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:17:53,829 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:17:53,830 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:17:58,850 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:17:58,851 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:03,871 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:18:03,872 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:08,941 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:18:08,959 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:14,043 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:18:14,102 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:19,476 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:18:19,577 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:24,613 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:18:24,625 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:29,648 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:18:29,651 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:34,681 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:18:34,689 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:39,711 DEBUG   HandlerThread:9768 [handler.py:handle_request():146] handle_request: status_report
+2024-07-26 11:18:39,851 DEBUG   SenderThread:9768 [sender.py:send_request():406] send_request: status_report
+2024-07-26 11:18:39,993 INFO    cpu       :9768 [interfaces.py:monitor():140] Process cpu has exited.
+2024-07-26 11:18:39,994 DEBUG   SystemMonitor:9768 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-07-26 11:18:39,995 DEBUG   SystemMonitor:9768 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-07-26 11:18:39,995 DEBUG   SystemMonitor:9768 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-07-26 11:18:40,587 INFO    MainThread:9768 [internal.py:handle_exit():76] Internal process exited

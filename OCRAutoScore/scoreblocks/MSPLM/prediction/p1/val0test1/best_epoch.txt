@@ -1,0 +1,1 @@
+epoch 11 val_qwk 0.795 test_qwk 0.769

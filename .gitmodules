@@ -1,9 +1,0 @@
-[submodule "thirdmodel/WaveMix"]
-	path = thirdmodel/WaveMix
-	url = https://git.shinemo.com/scm/maas/wavemix.git
-[submodule "thirdmodel/SpinalNet"]
-	path = thirdmodel/SpinalNet
-	url = https://git.shinemo.com/scm/maas/spinalnet.git
-[submodule "thirdmodel/Character_Recognition"]
-	path = thirdmodel/Character_Recognition
-	url = https://git.shinemo.com/scm/maas/character_recognition.git

@@ -30,3 +30,17 @@ segmentation/Layout4Card/testdata/*
 yolo/inter/best.onnx
 yolo/yolov9-main/runs/train/yolov9-c4/weights/best.pt
 CAN/checkpoints/demo.pth
+OCRAutoScore/CAN/checkpoints/demo.pth
+OCRAutoScore/scoreblocks/CAN/checkpoints/demo.pth
+OCRAutoScore/scoreblocks/CharacterRecognition/WaveMix.pth
+OCRAutoScore/scoreblocks/CharacterRecognition/WaveMix_dict.pth
+OCRAutoScore/scoreblocks/MSPLM/prediction/p1/val0test1/best_chunk.bin
+OCRAutoScore/scoreblocks/MSPLM/prediction/p1/val0test1/best_total.bin
+# OCRAutoScore/segmentation/Layout4Card/runs/detect/train3/weights/best.pt
+OCRAutoScore/segmentation/Layout4Card/runs/detect/train3/weights/last.pt
+OCRAutoScore/segmentation/Layout4Card/weights/yolov8m.pt
+OCRAutoScore/thirdmodel/Character_Recognition/param/WaveMix_dict.pth
+OCRAutoScore/yolo/inter/best.onnx
+# OCRAutoScore/yolo/ultralytics-main/runs/detect/train7/weights/best.pt
+# OCRAutoScore/yolo/yolov10-main/runs/detect/train7/weights/best.pt
+OCRAutoScore/yolo/yolov9-main/runs/train/yolov9-c4/weights/best.pt

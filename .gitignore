@@ -27,3 +27,6 @@ yarn-debug.log*
 yarn-error.log*
 segmentation/Layout4Card/testdata/*
 *segmentation/Layout4Card/testdata*
+yolo/inter/best.onnx
+yolo/yolov9-main/runs/train/yolov9-c4/weights/best.pt
+CAN/checkpoints/demo.pth
